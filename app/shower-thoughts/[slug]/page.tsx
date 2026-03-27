@@ -1,9 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { MDXRemote } from "next-mdx-remote/rsc"
 
-import { mdxComponents } from "@/components/mdx-components"
 import { Reveal } from "@/components/reveal"
 import { ShareActions } from "@/components/share-actions"
 import { formatDisplayDate } from "@/lib/utils"
@@ -37,6 +35,71 @@ export async function generateMetadata({ params }: PostDetailPageProps): Promise
   }
 }
 
+/**
+ * Simple markdown-to-HTML renderer for blog content.
+ * Handles headings, bold, italic, inline code, and paragraphs.
+ * Replaces next-mdx-remote to avoid CVE-2026-0969.
+ */
+function renderMarkdown(content: string): React.ReactNode[] {
+  const blocks = content.trim().split(/\n\n+/)
+
+  return blocks.map((block, i) => {
+    const trimmed = block.trim()
+    if (!trimmed) return null
+
+    if (trimmed.startsWith("## ")) {
+      return (
+        <h2
+          key={i}
+          className="mt-12 text-2xl font-bold uppercase tracking-[0.12em] text-text md:text-3xl"
+        >
+          {trimmed.replace("## ", "")}
+        </h2>
+      )
+    }
+
+    if (trimmed.startsWith("### ")) {
+      return (
+        <h3
+          key={i}
+          className="mt-10 text-xl font-semibold uppercase tracking-[0.12em] text-text"
+        >
+          {trimmed.replace("### ", "")}
+        </h3>
+      )
+    }
+
+    if (trimmed.startsWith("> ")) {
+      return (
+        <blockquote
+          key={i}
+          className="mt-6 border-l border-l-lime pl-4 font-medium italic text-text"
+        >
+          {trimmed.replace(/^>\s?/gm, "")}
+        </blockquote>
+      )
+    }
+
+    // Format inline elements
+    const formatted = trimmed
+      .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-text">$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em class="italic text-text">$1</em>')
+      .replace(
+        /`(.+?)`/g,
+        '<code class="rounded-[4px] border border-white/10 bg-white/5 px-1.5 py-0.5 font-mono text-[0.92em] text-lime">$1</code>'
+      )
+      .replace(/--/g, "\u2014")
+
+    return (
+      <p
+        key={i}
+        className="mt-5"
+        dangerouslySetInnerHTML={{ __html: formatted }}
+      />
+    )
+  })
+}
+
 export default async function PostDetailPage({ params }: PostDetailPageProps) {
   const { slug } = await params
   const post = getPostBySlug(slug)
@@ -67,7 +130,7 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
 
       <Reveal className="mt-10">
         <article className="max-w-none">
-          <MDXRemote components={mdxComponents} source={post.content} />
+          {renderMarkdown(post.content)}
         </article>
       </Reveal>
 
