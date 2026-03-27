@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+---
+
+<BaseLayout title="Naveen Kumar — Director & AI Production">
+  <section class="min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-3xl mx-auto px-6">
+    <div class="space-y-6">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight fade-in">
+        Naveen Kumar
+      </h1>
+      <p class="text-lg sm:text-xl text-muted max-w-xl leading-relaxed fade-in fade-in-delay-1">
+        I direct films and build AI production infrastructure.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-sm fade-in fade-in-delay-2">
+        <a href="#" class="text-text hover:text-muted transition-colors">Vortex Films &rarr;</a>
+        <a href="#" class="text-text hover:text-muted transition-colors">Vortex Labs &rarr;</a>
+      </div>
+      <div class="flex gap-6 text-sm text-muted pt-4 fade-in fade-in-delay-3">
+        <a
+          href="https://twitter.com/madvortex_"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-text transition-colors"
+        >
+          Twitter
+        </a>
+        <a
+          href="https://instagram.com/madvortex_"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-text transition-colors"
+        >
+          Instagram
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 fade-in fade-in-delay-4">
+      <a href="/work" class="text-muted text-xs tracking-widest uppercase hover:text-text transition-colors">
+        View Work
+      </a>
+    </div>
+  </section>
+</BaseLayout>
