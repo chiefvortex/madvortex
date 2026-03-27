@@ -1,6 +1,33 @@
-dist/
+# dependencies
 node_modules/
-.env
-.env.production
+.pnp
+.pnp.js
+
+# next.js
+.next/
+out/
+
+# production
+build/
+dist/
+
+# misc
 .DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+
+# env
+.env
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# legacy
 .astro/

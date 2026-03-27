@@ -14,6 +14,7 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://madvortex.co"),
   title: "Vortex | Visual Engineering Studio",
   description:
     "Vortex is a Bangalore-based creative engineering studio specializing in VFX, CGI, 3D visuals, and AI-assisted video for global brands.",
