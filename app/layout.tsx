@@ -1,57 +1,64 @@
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
-import { Geist } from "next/font/google"
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-space",
+  weight: ["400", "700"],
 })
 
-const geist = Geist({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-geist",
+  variable: "--font-mono",
+  weight: ["400", "700"],
 })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://madvortex.co"),
-  title: "Vortex | Visual Engineering Studio",
+  title: {
+    default: "NAVEEN KUMAR \u2014 Filmmaker \u00D7 Founder | Vortex Films",
+    template: "%s | MADVORTEX",
+  },
   description:
-    "Vortex is a Bangalore-based creative engineering studio specializing in VFX, CGI, 3D visuals, and AI-assisted video for global brands.",
+    "Digital dossier of Naveen Kumar. 11+ years in visual production. Founder of Vortex Films & Vortex Labs. Engineering perception through cinema, VFX, and code.",
   keywords: [
+    "Naveen Kumar",
+    "madvortex",
+    "Vortex Films",
+    "Vortex Labs",
     "VFX",
     "CGI",
     "3D",
     "AI Video",
-    "Visual Effects",
-    "Creative Studio",
+    "Filmmaker",
     "Bangalore",
-    "Brand Films",
   ],
-  authors: [{ name: "Vortex" }],
-  creator: "Vortex",
+  authors: [{ name: "Naveen Kumar" }],
+  creator: "Naveen Kumar",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://vortexfilms.in",
-    siteName: "Vortex",
-    title: "Vortex | Visual Engineering Studio",
+    url: "https://madvortex.co",
+    siteName: "MADVORTEX",
+    title: "NAVEEN KUMAR \u2014 Filmmaker \u00D7 Founder | Vortex Films",
     description:
-      "VFX. CGI. 3D. AI-Assisted Video. For brands that refuse to blend in.",
+      "Digital dossier of Naveen Kumar. 11+ years in visual production. Founder of Vortex Films & Vortex Labs.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Vortex - Visual Engineering Studio",
+        alt: "NAVEEN KUMAR - MADVORTEX",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vortex | Visual Engineering Studio",
+    title: "NAVEEN KUMAR \u2014 Filmmaker \u00D7 Founder",
     description:
-      "VFX. CGI. 3D. AI-Assisted Video. For brands that refuse to blend in.",
+      "Digital dossier. 11+ years in visual production. Engineering perception.",
+    creator: "@madvortex",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -72,35 +79,54 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Vortex",
+              "@type": "Person",
+              name: "Naveen Kumar",
+              alternateName: "madvortex",
               description:
-                "Creative engineering studio specializing in VFX, CGI, 3D visuals, and AI-assisted video",
-              url: "https://vortexfilms.in",
-              logo: "https://vortexfilms.in/logo.png",
+                "Filmmaker and technologist with 11+ years in visual production. Founder of Vortex Films & Vortex Labs.",
+              url: "https://madvortex.co",
               email: "naveen@vortexfilms.in",
+              jobTitle: "Filmmaker & Founder",
+              worksFor: [
+                {
+                  "@type": "Organization",
+                  name: "Vortex Films",
+                  foundingDate: "2022",
+                },
+                {
+                  "@type": "Organization",
+                  name: "Vortex Labs",
+                },
+              ],
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Bangalore",
                 addressCountry: "India",
               },
+              alumniOf: {
+                "@type": "EducationalOrganization",
+                name: "NIT Jalandhar",
+              },
               sameAs: [
-                "https://linkedin.com/company/vortex",
-                "https://twitter.com/vortex",
-                "https://instagram.com/vortex",
+                "https://x.com/madvortex",
+                "https://linkedin.com/in/madvortex",
+                "https://instagram.com/madvortex",
+                "https://github.com/madvortex",
               ],
             }),
           }}
         />
       </head>
-      <body className={`${inter.variable} ${geist.variable} font-sans`}>
+      <body
+        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans bg-[#0A0A0A] text-[#E8E8E8]`}
+      >
         {children}
       </body>
     </html>

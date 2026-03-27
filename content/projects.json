@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "amd-cgi-brand-film",
+    "client": "AMD",
+    "title": "CGI Brand Film",
+    "category": "CGI",
+    "description": "AMD came to us with a challenge: make silicon feel cinematic. We stripped away the usual tech-ad playbook -- no floating chips, no neon grids -- and built a visual language that treated their hardware like architecture. Every frame was designed to make you feel the scale of what's inside a processor, not just see it.",
+    "images": []
+  },
+  {
+    "slug": "nike-motion-campaign",
+    "client": "Nike",
+    "title": "Motion Campaign",
+    "category": "VFX",
+    "description": "Nike wanted motion that matched their energy -- fast, unapologetic, impossible to ignore. We composited real athletes into environments that shouldn't exist and made it look effortless. The brief said 'make it move.' We made it fly.",
+    "images": []
+  },
+  {
+    "slug": "spotify-3d-product-story",
+    "client": "Spotify",
+    "title": "3D Product Storytelling",
+    "category": "3D",
+    "description": "Spotify needed their Wrapped campaign to feel tangible. We turned data into physical objects -- playlists became sculptures, listening habits became landscapes. Every asset was rendered to feel like something you could reach out and touch.",
+    "images": []
+  },
+  {
+    "slug": "ikea-retail-visuals",
+    "client": "IKEA",
+    "title": "Retail Visual Systems",
+    "category": "CGI",
+    "description": "IKEA's challenge was making flat-pack furniture feel aspirational without losing the accessibility that makes them IKEA. We built a CGI pipeline that could render thousands of product configurations while keeping every frame magazine-worthy.",
+    "images": []
+  },
+  {
+    "slug": "qatar-airways-brand-motion",
+    "client": "Qatar Airways",
+    "title": "Premium Brand Motion",
+    "category": "AI Video",
+    "description": "For Qatar Airways, premium isn't a style -- it's a standard. We combined AI-assisted workflows with traditional compositing to deliver brand motion at a pace that would've been impossible two years ago. The result: cinematic quality at commercial speed.",
+    "images": []
+  },
+  {
+    "slug": "one8-brand-direction",
+    "client": "One8",
+    "title": "Brand Visual Direction",
+    "category": "VFX",
+    "description": "One8 needed a visual identity that could live across everything from social to broadcast. We built a modular visual system -- a set of rules, textures, and motion principles that anyone on their team could apply without losing the craft.",
+    "images": []
+  }
+]

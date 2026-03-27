@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "ai-color-grader",
+    "name": "AI Color Grader",
+    "description": "Drop a frame, get a cinematic grade.",
+    "status": "soon",
+    "builtWith": ["Next.js", "fal.ai", "Tailwind"]
+  },
+  {
+    "slug": "prompt-optimizer",
+    "name": "Prompt Optimizer",
+    "description": "Paste a prompt, get a better one.",
+    "status": "soon",
+    "builtWith": ["Next.js", "Claude API"]
+  }
+]

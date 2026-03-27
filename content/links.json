@@ -1,0 +1,44 @@
+[
+  {
+    "platform": "X (Twitter)",
+    "handle": "@madvortex",
+    "url": "https://x.com/madvortex",
+    "icon": "twitter"
+  },
+  {
+    "platform": "LinkedIn",
+    "handle": "Naveen Kumar",
+    "url": "https://linkedin.com/in/madvortex",
+    "icon": "linkedin"
+  },
+  {
+    "platform": "Instagram",
+    "handle": "@madvortex",
+    "url": "https://instagram.com/madvortex",
+    "icon": "instagram"
+  },
+  {
+    "platform": "GitHub",
+    "handle": "@madvortex",
+    "url": "https://github.com/madvortex",
+    "icon": "github"
+  },
+  {
+    "platform": "YouTube",
+    "handle": "Vortex Films",
+    "url": "https://youtube.com/@vortexfilms",
+    "icon": "youtube"
+  },
+  {
+    "platform": "Behance",
+    "handle": "Naveen Kumar",
+    "url": "https://behance.net/madvortex",
+    "icon": "palette"
+  },
+  {
+    "platform": "Email",
+    "handle": "naveen@vortexfilms.in",
+    "url": "mailto:naveen@vortexfilms.in",
+    "icon": "mail"
+  }
+]
