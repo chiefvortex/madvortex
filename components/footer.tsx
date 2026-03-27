@@ -1,35 +1,31 @@
-"use client"
+import Link from "next/link"
 
-import { Linkedin, Twitter, Instagram, Github } from "lucide-react"
+import { links } from "@/lib/utils"
 
-const socials = [
-  { icon: Linkedin, href: "https://linkedin.com/in/madvortex", label: "LinkedIn" },
-  { icon: Twitter, href: "https://x.com/madvortex", label: "X" },
-  { icon: Instagram, href: "https://instagram.com/madvortex", label: "Instagram" },
-  { icon: Github, href: "https://github.com/madvortex", label: "GitHub" },
-]
+import { PlatformIcon } from "./platform-icon"
+
+const footerLinks = links.filter((link) =>
+  ["X", "LinkedIn", "Instagram", "GitHub"].includes(link.platform),
+)
 
 export function Footer() {
   return (
-    <footer className="border-t border-primary/30 mt-20">
-      <div className="max-w-[1400px] mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="text-sm text-muted-foreground">
-          <span className="text-foreground">madvortex.co</span>
-          <span className="mx-2">/</span>
-          2026 Naveen Kumar
-        </div>
-        <div className="flex items-center gap-4">
-          {socials.map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
+    <footer className="site-shell pb-10 pt-8 md:pb-12">
+      <div className="h-px w-full bg-lime/70" />
+      <div className="flex flex-col gap-6 py-6 md:flex-row md:items-center md:justify-between">
+        <p className="mono-data text-dim">© 2026 madvortex</p>
+        <div className="flex items-center gap-5">
+          {footerLinks.map((link) => (
+            <Link
+              key={link.platform}
+              aria-label={link.platform}
+              className="text-dim transition-colors duration-300 hover:text-lime"
+              href={link.url}
+              rel="noreferrer"
               target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-              aria-label={social.label}
             >
-              <social.icon size={18} />
-            </a>
+              <PlatformIcon icon={link.icon} />
+            </Link>
           ))}
         </div>
       </div>

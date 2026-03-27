@@ -1,33 +1,16 @@
-"use client"
-
-import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
 
 type SectionHeadingProps = {
-  eyebrow?: string
-  title: string
-  subtitle?: string
+  label: string
+  description?: string
+  className?: string
 }
 
-export function SectionHeading({ eyebrow, title, subtitle }: SectionHeadingProps) {
+export function SectionHeading({ label, description, className }: SectionHeadingProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="mb-12"
-    >
-      {eyebrow && (
-        <p className="text-xs font-medium uppercase tracking-[0.1em] text-muted-foreground mb-3">
-          {eyebrow}
-        </p>
-      )}
-      <h2 className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] text-foreground">
-        {title}
-      </h2>
-      {subtitle && (
-        <p className="mt-4 text-muted-foreground max-w-xl leading-relaxed">{subtitle}</p>
-      )}
-    </motion.div>
+    <div className={cn("space-y-3", className)}>
+      <div className="section-line-heading">{label}</div>
+      {description ? <p className="max-w-2xl">{description}</p> : null}
+    </div>
   )
 }

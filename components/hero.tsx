@@ -1,78 +1,52 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { ChevronDown } from "lucide-react"
 import Link from "next/link"
+import { ChevronDown } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
+
+import { TypewriterText } from "./typewriter-text"
 
 export function Hero() {
+  const shouldReduceMotion = useReducedMotion()
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-      {/* Atmospheric background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-primary/[0.02] blur-[100px]" />
-        {/* Grain overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.015]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          }}
-        />
-      </div>
-
-      <div className="max-w-3xl text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground mb-6"
+    <section className="relative overflow-hidden">
+      <div className="hero-orb absolute right-[-12%] top-24 h-[28rem] w-[28rem] animate-drift opacity-80 md:h-[36rem] md:w-[36rem]" />
+      <div className="site-shell relative flex min-h-screen items-end pb-20 pt-32 md:pb-24 md:pt-40">
+        <motion.div
+          animate={shouldReduceMotion ? { opacity: 1 } : { opacity: [0, 1, 0.94, 1] }}
+          className="max-w-6xl"
+          initial={{ opacity: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
-          Naveen Kumar
-        </motion.p>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-[-0.03em] text-foreground leading-[1.05]"
-        >
-          I make things move.
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-6 text-lg text-muted-foreground"
-        >
-          Visual engineer. Founder of Vortex. Based in Bangalore.
-        </motion.p>
+          <p className="kicker">NK — 25 / BANGALORE</p>
+          <h1 className="hero-title mt-6 max-w-5xl">I MAKE THINGS MOVE.</h1>
+          <p className="mt-6 max-w-2xl text-lg text-muted md:text-[18px]">
+            Visual engineer. Founder of Vortex. Based in Bangalore.
+          </p>
+          <div className="mt-10 border-l border-l-lime pl-4">
+            <TypewriterText
+              className="font-mono text-[11px] uppercase tracking-[0.24em] text-lime md:text-[12px]"
+              text="> 11 YEARS. 200+ PROJECTS. NIKE. AMD. SPOTIFY. IKEA. QATAR AIRWAYS. ONE8."
+            />
+          </div>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10"
+          animate={shouldReduceMotion ? undefined : { opacity: [0.35, 1, 0.35], y: [0, 8, 0] }}
+          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
+          transition={{ duration: 2.6, ease: "easeOut", repeat: Number.POSITIVE_INFINITY }}
         >
           <Link
-            href="/work"
-            className="inline-flex items-center px-6 py-3 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 rounded"
+            aria-label="Scroll to selected work"
+            className="flex flex-col items-center gap-3"
+            href="#selected-work"
           >
-            See the work
+            <span className="h-12 w-px bg-lime/60" />
+            <ChevronDown className="h-4 w-4 text-lime" strokeWidth={1.6} />
           </Link>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="absolute bottom-10 flex flex-col items-center gap-2"
-      >
-        <div className="w-px h-10 bg-gradient-to-b from-transparent to-muted-foreground/30" />
-        <ChevronDown size={14} className="text-muted-foreground/30 animate-bounce" />
-      </motion.div>
     </section>
   )
 }

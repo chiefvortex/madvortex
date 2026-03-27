@@ -2,63 +2,63 @@ import type { Config } from "tailwindcss"
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./content/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{ts,tsx,mdx}",
+    "./components/**/*.{ts,tsx,mdx}",
+    "./content/**/*.{mdx,json}",
+    "./lib/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        lime: "#BFFF00",
-        red: "#FF0000",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        background: "var(--background-color)",
+        surface: "var(--surface-color)",
+        border: "var(--border-color)",
+        text: "var(--text-color)",
+        muted: "var(--muted-color)",
+        dim: "var(--dim-color)",
+        lime: "var(--lime-color)",
+        red: "var(--red-color)",
       },
       fontFamily: {
-        sans: ["var(--font-space)"],
-        mono: ["var(--font-mono)"],
-        space: ["var(--font-space)"],
+        sans: ["var(--font-space)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+      },
+      boxShadow: {
+        none: "none",
       },
       keyframes: {
-        "rotate-slow": {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
+        flicker: {
+          "0%, 100%": { opacity: "1" },
+          "6%": { opacity: "0.82" },
+          "7%": { opacity: "1" },
+          "22%": { opacity: "0.9" },
+          "23%": { opacity: "1" },
+          "61%": { opacity: "0.94" },
+          "62%": { opacity: "1" },
+        },
+        drift: {
+          "0%": { transform: "translate3d(-2%, 0, 0) scale(1)" },
+          "50%": { transform: "translate3d(2%, -3%, 0) scale(1.04)" },
+          "100%": { transform: "translate3d(-1%, 2%, 0) scale(1)" },
+        },
+        pulseLine: {
+          "0%, 100%": { opacity: "0.25" },
+          "50%": { opacity: "0.85" },
+        },
+        grainShift: {
+          "0%": { transform: "translate(0, 0)" },
+          "20%": { transform: "translate(-2%, 1%)" },
+          "40%": { transform: "translate(1%, -1%)" },
+          "60%": { transform: "translate(-1%, 2%)" },
+          "80%": { transform: "translate(2%, -2%)" },
+          "100%": { transform: "translate(0, 0)" },
         },
       },
       animation: {
-        "rotate-slow": "rotate-slow 20s linear infinite",
+        drift: "drift 22s linear infinite",
+        flicker: "flicker 4s linear infinite",
+        pulseLine: "pulseLine 3s ease-in-out infinite",
+        grainShift: "grainShift 0.6s steps(4) infinite",
       },
     },
   },

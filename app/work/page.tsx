@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
-import { WorkListing } from "./work-listing"
+
+import { WorkArchive } from "@/components/work-archive"
 
 export const metadata: Metadata = {
-  title: "Work",
-  description: "Selected projects by Naveen Kumar. VFX, CGI, 3D, and AI-assisted video.",
+  title: "Output Logs",
+  description: "Selected work spanning VFX, CGI, 3D, AI video, and direction.",
 }
 
-export default function Work() {
-  return <WorkListing />
+export default function WorkPage() {
+  return <WorkArchive />
 }

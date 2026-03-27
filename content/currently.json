@@ -1,6 +1,18 @@
-{
-  "reading": "\"Shoe Dog\" by Phil Knight",
-  "building": "An AI color grading tool",
-  "obsessing": "Severance S2",
-  "listening": "Cigarettes After Sex"
-}
+[
+  {
+    "label": "READING",
+    "value": "Shoe Dog"
+  },
+  {
+    "label": "BUILDING",
+    "value": "AI color grading tool"
+  },
+  {
+    "label": "OBSESSING OVER",
+    "value": "Severance S2"
+  },
+  {
+    "label": "LISTENING",
+    "value": "Cigarettes After Sex"
+  }
+]

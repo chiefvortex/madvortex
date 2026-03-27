@@ -1,39 +1,39 @@
 [
   {
-    "platform": "X (Twitter)",
-    "handle": "@madvortex",
-    "url": "https://x.com/madvortex",
-    "icon": "twitter"
+    "platform": "X",
+    "handle": "@madvortex_",
+    "url": "https://x.com/madvortex_",
+    "icon": "x"
   },
   {
     "platform": "LinkedIn",
-    "handle": "Naveen Kumar",
+    "handle": "/in/madvortex",
     "url": "https://linkedin.com/in/madvortex",
     "icon": "linkedin"
   },
   {
     "platform": "Instagram",
-    "handle": "@madvortex",
-    "url": "https://instagram.com/madvortex",
+    "handle": "@madvortex.cc",
+    "url": "https://instagram.com/madvortex.cc",
     "icon": "instagram"
   },
   {
     "platform": "GitHub",
-    "handle": "@madvortex",
-    "url": "https://github.com/madvortex",
+    "handle": "naveenkumar2627",
+    "url": "https://github.com/naveenkumar2627",
     "icon": "github"
   },
   {
     "platform": "YouTube",
-    "handle": "Vortex Films",
-    "url": "https://youtube.com/@vortexfilms",
+    "handle": "@vortexfilmsin",
+    "url": "https://youtube.com/@vortexfilmsin",
     "icon": "youtube"
   },
   {
     "platform": "Behance",
-    "handle": "Naveen Kumar",
+    "handle": "/madvortex",
     "url": "https://behance.net/madvortex",
-    "icon": "palette"
+    "icon": "behance"
   },
   {
     "platform": "Email",

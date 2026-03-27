@@ -2,15 +2,40 @@
   {
     "slug": "ai-color-grader",
     "name": "AI Color Grader",
-    "description": "Drop a frame, get a cinematic grade.",
-    "status": "soon",
-    "builtWith": ["Next.js", "fal.ai", "Tailwind"]
+    "status": "COMING SOON",
+    "description": "A reference-aware grading assistant for fast mood exploration without flattening the original footage.",
+    "builtWith": ["Python", "DaVinci Resolve", "Vision Models"],
+    "releaseWindow": "Q3 2026",
+    "summary": "A lab tool for fast look development that starts with intent instead of presets.",
+    "details": [
+      "I started sketching this because color reviews take too long when every conversation begins at zero. I want a system that can identify tonal references, isolate what actually matters, and return a grade map that still feels human.",
+      "The goal is not auto-finish. The goal is better first passes, fewer dead-end iterations, and a stronger bridge between taste and execution."
+    ]
   },
   {
     "slug": "prompt-optimizer",
     "name": "Prompt Optimizer",
-    "description": "Paste a prompt, get a better one.",
-    "status": "soon",
-    "builtWith": ["Next.js", "Claude API"]
+    "status": "COMING SOON",
+    "description": "A prompt refinement engine built for directors and post teams who need consistent AI outputs under production pressure.",
+    "builtWith": ["TypeScript", "Prompt Evaluation", "LLM Routing"],
+    "releaseWindow": "Q4 2026",
+    "summary": "A way to make prompt writing less mystical and more production-ready.",
+    "details": [
+      "The hardest part of AI video is not generating frames. It is getting repeatable behavior from unstable systems. This tool compares prompts, identifies weak constraints, and suggests tighter language before expensive renders even begin.",
+      "I am treating it like a control room, not a chatbot. The interface is built around iteration history, style continuity, and failure analysis."
+    ]
+  },
+  {
+    "slug": "thumbnail-score-predictor",
+    "name": "Thumbnail Score Predictor",
+    "status": "COMING SOON",
+    "description": "An experiment in ranking thumbnail options using composition, contrast, and curiosity signals before publishing.",
+    "builtWith": ["Computer Vision", "PyTorch", "Analytics"],
+    "releaseWindow": "Q1 2027",
+    "summary": "A classifier for deciding which frame deserves to represent the whole story.",
+    "details": [
+      "I hate choosing thumbnails by instinct alone when the stakes are attention and distribution. This prototype reads a batch of frames and scores them against visual hierarchy, face detection, motion implication, and title-safe placement.",
+      "The ambition is simple: ship stronger covers faster, then learn where the model is wrong and where human intuition still wins."
+    ]
   }
 ]

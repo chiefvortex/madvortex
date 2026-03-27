@@ -1,50 +1,232 @@
 [
   {
+    "id": "VX-001",
+    "slug": "one8-virat-kohli",
+    "client": "ONE8 × Virat Kohli",
+    "title": "Precision Under Pressure",
+    "role": "Director / VFX Lead",
+    "classification": "Commercial",
+    "year": "2025",
+    "categories": ["DIRECTION", "VFX"],
+    "featured": true,
+    "status": "DECLASSIFIED",
+    "summary": "A performance-led campaign film built around impact edits, restrained VFX, and celebrity presence that never feels manufactured.",
+    "description": [
+      "I approached the ONE8 film like a controlled pressure chamber. The brief had star power baked into it, but I wanted the craft to feel disciplined instead of noisy. The camera language had to carry confidence before the effects arrived.",
+      "My role was to direct the rhythm and make the post work invisible. Every light pass, transition, and composite existed to reinforce Virat's presence instead of competing with it. When the VFX are doing their job, the viewer only feels momentum."
+    ],
+    "deliverables": ["Campaign film", "Social cutdowns", "VFX supervision"],
+    "palette": {
+      "from": "#111111",
+      "via": "#27330b",
+      "to": "#6f8308"
+    }
+  },
+  {
+    "id": "VX-002",
+    "slug": "nike-motion-vfx",
+    "client": "Nike",
+    "title": "Velocity Fragments",
+    "role": "Motion & VFX",
+    "classification": "Commercial",
+    "year": "2024",
+    "categories": ["VFX"],
+    "featured": true,
+    "status": "DECLASSIFIED",
+    "summary": "An energy-forward motion piece where speed came from visual timing, texture, and selective digital augmentation.",
+    "description": [
+      "Nike projects punish hesitation. The frame either moves with conviction or it dies. I built the piece around aggressive pacing and visual texture, then used VFX only where the impact curve needed more acceleration.",
+      "The fun part was balancing polish with grit. I wanted the film to feel premium without scrubbing away the friction that makes movement believable."
+    ],
+    "deliverables": ["Hero film", "Motion design toolkit", "VFX finishing"],
+    "palette": {
+      "from": "#0a0a0a",
+      "via": "#101f14",
+      "to": "#49620f"
+    }
+  },
+  {
+    "id": "VX-003",
     "slug": "amd-cgi-brand-film",
     "client": "AMD",
-    "title": "CGI Brand Film",
-    "category": "CGI",
-    "description": "AMD came to us with a challenge: make silicon feel cinematic. We stripped away the usual tech-ad playbook -- no floating chips, no neon grids -- and built a visual language that treated their hardware like architecture. Every frame was designed to make you feel the scale of what's inside a processor, not just see it.",
-    "images": []
+    "title": "Silicon Heat",
+    "role": "CGI Brand Film",
+    "classification": "Commercial",
+    "year": "2024",
+    "categories": ["CGI"],
+    "featured": true,
+    "status": "DECLASSIFIED",
+    "summary": "A CGI-led brand story focused on engineered surfaces, thermal light, and hardware treated like cinema.",
+    "description": [
+      "With AMD, I was interested in translating performance into atmosphere. Instead of explaining the technology literally, I leaned into materiality: glow behavior, edge reflections, heat signatures, and a camera path that felt precise instead of flashy.",
+      "CGI works best for me when it behaves like production design. The objective is not to show that something was rendered. It is to make an invisible system feel tangible."
+    ],
+    "deliverables": ["CGI hero film", "Still frames", "Launch edits"],
+    "palette": {
+      "from": "#121212",
+      "via": "#0e241d",
+      "to": "#2d7b43"
+    }
   },
   {
-    "slug": "nike-motion-campaign",
-    "client": "Nike",
-    "title": "Motion Campaign",
-    "category": "VFX",
-    "description": "Nike wanted motion that matched their energy -- fast, unapologetic, impossible to ignore. We composited real athletes into environments that shouldn't exist and made it look effortless. The brief said 'make it move.' We made it fly.",
-    "images": []
-  },
-  {
-    "slug": "spotify-3d-product-story",
+    "id": "VX-004",
+    "slug": "spotify-3d-product-storytelling",
     "client": "Spotify",
-    "title": "3D Product Storytelling",
-    "category": "3D",
-    "description": "Spotify needed their Wrapped campaign to feel tangible. We turned data into physical objects -- playlists became sculptures, listening habits became landscapes. Every asset was rendered to feel like something you could reach out and touch.",
-    "images": []
+    "title": "Object Memory",
+    "role": "3D Product Storytelling",
+    "classification": "Commercial",
+    "year": "2023",
+    "categories": ["3D"],
+    "featured": true,
+    "status": "DECLASSIFIED",
+    "summary": "A tactile 3D narrative for product moments, designed to make software feel physical and intimate.",
+    "description": [
+      "Spotify has a rare challenge: the product lives in software, but the audience experiences it emotionally. I built a 3D visual language that translated interface actions into objects, surfaces, and motion cues you can almost touch.",
+      "What mattered most was restraint. The shapes had to feel iconic, not ornamental. Every movement was tuned to sound like a visual beat."
+    ],
+    "deliverables": ["3D film", "Product renders", "Social assets"],
+    "palette": {
+      "from": "#090909",
+      "via": "#132617",
+      "to": "#1f7d3b"
+    }
   },
   {
-    "slug": "ikea-retail-visuals",
+    "id": "VX-005",
+    "slug": "ikea-retail-visual-systems",
     "client": "IKEA",
-    "title": "Retail Visual Systems",
-    "category": "CGI",
-    "description": "IKEA's challenge was making flat-pack furniture feel aspirational without losing the accessibility that makes them IKEA. We built a CGI pipeline that could render thousands of product configurations while keeping every frame magazine-worthy.",
-    "images": []
+    "title": "Retail in Motion",
+    "role": "Retail Visual Systems",
+    "classification": "Commercial",
+    "year": "2023",
+    "categories": ["3D", "CGI"],
+    "featured": false,
+    "status": "DECLASSIFIED",
+    "summary": "A modular motion system for retail visuals that translated everyday objects into scalable digital assets.",
+    "description": [
+      "IKEA work demands clarity before style. The solution had to survive across formats, teams, and timelines, so I built a modular visual system where the objects stayed familiar but the motion added precision and warmth.",
+      "I think of projects like this as infrastructure. If the logic is strong, the outputs can evolve without the identity fragmenting."
+    ],
+    "deliverables": ["Retail loops", "CGI stills", "Motion system"],
+    "palette": {
+      "from": "#111111",
+      "via": "#242314",
+      "to": "#7f6b14"
+    }
   },
   {
+    "id": "VX-006",
     "slug": "qatar-airways-brand-motion",
     "client": "Qatar Airways",
-    "title": "Premium Brand Motion",
-    "category": "AI Video",
-    "description": "For Qatar Airways, premium isn't a style -- it's a standard. We combined AI-assisted workflows with traditional compositing to deliver brand motion at a pace that would've been impossible two years ago. The result: cinematic quality at commercial speed.",
-    "images": []
+    "title": "Altitude Language",
+    "role": "Premium Brand Motion",
+    "classification": "Commercial",
+    "year": "2022",
+    "categories": ["VFX", "DIRECTION"],
+    "featured": false,
+    "status": "DECLASSIFIED",
+    "summary": "A motion-led premium brand film built around elegance, travel psychology, and invisible digital finishing.",
+    "description": [
+      "Luxury communication falls apart the moment it tries too hard. For Qatar Airways, I focused on tension, negative space, and motion that moved with confidence rather than speed.",
+      "The VFX layer was there to remove friction, extend scale, and refine the transitions between ideas. The ambition was a film that felt expensive because it felt controlled."
+    ],
+    "deliverables": ["Brand film", "Cutdowns", "Finish supervision"],
+    "palette": {
+      "from": "#0f0f0f",
+      "via": "#2b1321",
+      "to": "#772c53"
+    }
   },
   {
-    "slug": "one8-brand-direction",
-    "client": "One8",
-    "title": "Brand Visual Direction",
-    "category": "VFX",
-    "description": "One8 needed a visual identity that could live across everything from social to broadcast. We built a modular visual system -- a set of rules, textures, and motion principles that anyone on their team could apply without losing the craft.",
-    "images": []
+    "id": "VX-007",
+    "slug": "space-visual-direction",
+    "client": "Space",
+    "title": "Future Signals",
+    "role": "Visual Direction",
+    "classification": "Web3",
+    "year": "2024",
+    "categories": ["DIRECTION", "AI VIDEO"],
+    "featured": false,
+    "status": "DECLASSIFIED",
+    "summary": "A speculative visual identity for a Web3 product designed to feel credible, cinematic, and ahead of the category.",
+    "description": [
+      "Web3 branding often mistakes chaos for futurism. I wanted Space to feel composed, system-driven, and visually literate. That meant building a language of signals, grids, and motion cues that felt more like mission control than marketing.",
+      "I used AI-assisted ideation where it accelerated exploration, then rebuilt the final frames with tighter art direction and stronger design logic."
+    ],
+    "deliverables": ["Visual direction", "Identity frames", "Launch motion"],
+    "palette": {
+      "from": "#0b0b0b",
+      "via": "#0d1b2a",
+      "to": "#2a6f9e"
+    }
+  },
+  {
+    "id": "VX-008",
+    "slug": "the-blackout",
+    "client": "The Blackout",
+    "title": "The Blackout",
+    "role": "Writer / Director",
+    "classification": "Short Film",
+    "year": "2022",
+    "categories": ["DIRECTION"],
+    "featured": false,
+    "status": "DECLASSIFIED",
+    "summary": "A narrative short built around silence, isolation, and image-first storytelling.",
+    "description": [
+      "The Blackout is where I let instinct lead more than systems. It came from a need to make something intimate, something that could hold tension without over-explaining itself.",
+      "Writing and directing it reminded me that the most powerful visual decisions are often subtraction. Remove the unnecessary, and the frame starts saying more."
+    ],
+    "deliverables": ["Screenplay", "Direction", "Post pipeline"],
+    "palette": {
+      "from": "#050505",
+      "via": "#1c1c1c",
+      "to": "#4c4c4c"
+    }
+  },
+  {
+    "id": "VX-009",
+    "slug": "oku-brand-identity-motion",
+    "client": "OKU",
+    "title": "Quiet Luxury for Web3",
+    "role": "Brand Identity & Motion",
+    "classification": "Web3",
+    "year": "2023",
+    "categories": ["AI VIDEO", "3D"],
+    "featured": false,
+    "status": "DECLASSIFIED",
+    "summary": "A brand world for OKU that traded crypto noise for premium restraint and motion clarity.",
+    "description": [
+      "OKU needed a visual identity that felt informed by finance and fashion, not meme culture. I built a slower, more deliberate motion system with clean geometry and enough texture to keep it human.",
+      "This kind of work is less about style frames and more about trust. Every design decision either raises credibility or destroys it."
+    ],
+    "deliverables": ["Identity system", "Motion kit", "3D assets"],
+    "palette": {
+      "from": "#090909",
+      "via": "#241e12",
+      "to": "#8d6a1a"
+    }
+  },
+  {
+    "id": "VX-010",
+    "slug": "burst-visual-systems",
+    "client": "Burst",
+    "title": "Burst Systems",
+    "role": "Visual Systems",
+    "classification": "Web3",
+    "year": "2025",
+    "categories": ["AI VIDEO", "CGI"],
+    "featured": false,
+    "status": "DECLASSIFIED",
+    "summary": "A fast-moving visual toolkit for a Web3 launch that needed coherence across experimental outputs.",
+    "description": [
+      "Burst was messy in the best possible way: ambitious, fast, and hungry for a visual system that could stretch across launches without losing itself. I treated the identity like a set of rules instead of a set of assets.",
+      "That is usually where I do my best work. I am less interested in one beautiful frame than in building a repeatable visual language that keeps delivering after the first drop."
+    ],
+    "deliverables": ["Visual system", "CGI assets", "Campaign variants"],
+    "palette": {
+      "from": "#101010",
+      "via": "#1c1028",
+      "to": "#5a2d86"
+    }
   }
 ]
