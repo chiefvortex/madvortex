@@ -32,7 +32,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 md:py-32 border-t border-[rgba(255,255,255,0.06)]">
+    <section id="services" className="py-36 md:py-40 border-t border-[rgba(255,255,255,0.06)]">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         {/* Section header */}
         <motion.div
@@ -42,7 +42,10 @@ export function Services() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+          <h2 
+            className="font-heading text-3xl md:text-4xl font-bold text-foreground"
+            style={{ letterSpacing: "-0.02em" }}
+          >
             What We Build
           </h2>
         </motion.div>
@@ -56,7 +59,7 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative p-8 md:p-10 border border-[rgba(255,255,255,0.06)] bg-card transition-all duration-500 hover:border-primary"
+              className="group relative p-8 md:p-10 border border-[rgba(255,255,255,0.06)] bg-card transition-all duration-500 hover:border-primary will-change-transform"
             >
               {/* Icon */}
               <div className="w-12 h-12 flex items-center justify-center border border-[rgba(255,255,255,0.06)] mb-6 transition-colors duration-300 group-hover:border-primary group-hover:text-primary">
@@ -70,7 +73,10 @@ export function Services() {
               <h3 className="font-heading text-xl font-semibold text-foreground mb-3 transition-colors duration-300 group-hover:text-primary">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed text-pretty">
+              <p 
+                className="text-muted-foreground text-pretty"
+                style={{ lineHeight: 1.7 }}
+              >
                 {service.description}
               </p>
 

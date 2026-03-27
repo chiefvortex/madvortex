@@ -13,42 +13,42 @@ const projects = [
     title: "CGI Brand Film",
     client: "AMD",
     category: "CGI" as Category,
-    color: "#1a1a2e",
+    color: "#0d0d14",
   },
   {
     id: 2,
     title: "Motion-led Campaign Visuals",
     client: "Nike",
     category: "VFX" as Category,
-    color: "#1a1a2e",
+    color: "#0d0d14",
   },
   {
     id: 3,
     title: "3D Product Storytelling",
     client: "Spotify",
     category: "3D" as Category,
-    color: "#1a1a2e",
+    color: "#0d0d14",
   },
   {
     id: 4,
     title: "Retail Visual Systems",
     client: "IKEA",
     category: "CGI" as Category,
-    color: "#1a1a2e",
+    color: "#0d0d14",
   },
   {
     id: 5,
     title: "Premium Brand Motion",
     client: "Qatar Airways",
     category: "AI Video" as Category,
-    color: "#1a1a2e",
+    color: "#0d0d14",
   },
   {
     id: 6,
     title: "Brand Visual Direction",
     client: "One8",
     category: "VFX" as Category,
-    color: "#1a1a2e",
+    color: "#0d0d14",
   },
 ]
 
@@ -61,7 +61,7 @@ export function SelectedWork() {
       : projects.filter((p) => p.category === activeFilter)
 
   return (
-    <section id="work" className="py-24 md:py-32">
+    <section id="work" className="py-36 md:py-40">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         {/* Section header */}
         <motion.div
@@ -71,7 +71,10 @@ export function SelectedWork() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+          <h2 
+            className="font-heading text-3xl md:text-4xl font-bold text-foreground"
+            style={{ letterSpacing: "-0.02em" }}
+          >
             Selected Work
           </h2>
         </motion.div>
@@ -97,7 +100,7 @@ export function SelectedWork() {
                 "px-5 py-2.5 text-sm tracking-wide uppercase transition-all duration-300",
                 activeFilter === category
                   ? "bg-primary text-primary-foreground"
-                  : "border border-[rgba(255,255,255,0.06)] text-muted-foreground hover:border-primary hover:text-primary"
+                  : "border border-[rgba(255,255,255,0.08)] text-muted-foreground hover:border-primary hover:text-primary"
               )}
             >
               {category}
@@ -118,32 +121,65 @@ export function SelectedWork() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative"
+              className="group relative will-change-transform"
             >
               <a
                 href="#"
                 className="block relative aspect-video overflow-hidden border border-[rgba(255,255,255,0.06)] transition-all duration-500 hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 aria-label={`View ${project.title} project for ${project.client}`}
               >
-                {/* Placeholder image */}
+                {/* Placeholder image with grid lines and diagonal scan lines */}
                 <div
-                  className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 transition-all duration-700 group-hover:scale-105 group-hover:-translate-y-1"
                   style={{
                     backgroundColor: project.color,
-                    backgroundImage: `
-                      linear-gradient(135deg, rgba(0,51,255,0.1) 0%, transparent 50%),
-                      linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.8) 100%)
-                    `,
                   }}
                 >
+                  {/* Dark gradient base */}
+                  <div 
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(135deg, rgba(0,51,255,0.08) 0%, transparent 50%),
+                        linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.9) 100%)
+                      `,
+                    }}
+                  />
+                  
+                  {/* Faint grid lines */}
+                  <div 
+                    className="absolute inset-0 opacity-[0.04]"
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)
+                      `,
+                      backgroundSize: "40px 40px",
+                    }}
+                  />
+                  
+                  {/* Diagonal scan lines */}
+                  <div 
+                    className="absolute inset-0 opacity-[0.02]"
+                    style={{
+                      backgroundImage: `repeating-linear-gradient(
+                        -45deg,
+                        transparent,
+                        transparent 2px,
+                        rgba(255,255,255,0.1) 2px,
+                        rgba(255,255,255,0.1) 4px
+                      )`,
+                    }}
+                  />
+                  
                   {/* Cinematic bars */}
-                  <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-black/50 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-black/60 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
 
                 {/* Project info overlay */}
                 <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end">
-                  <span className="text-xs tracking-[0.2em] text-primary uppercase mb-2">
+                  <span className="text-xs tracking-[0.2em] text-primary/90 uppercase mb-2 font-medium">
                     {project.category}
                   </span>
                   <h3 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-1 transition-colors group-hover:text-primary">
@@ -160,6 +196,11 @@ export function SelectedWork() {
             </motion.article>
           ))}
         </div>
+      </div>
+      
+      {/* Section divider */}
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 mt-36 md:mt-40">
+        <div className="border-t border-[rgba(255,255,255,0.04)]" />
       </div>
     </section>
   )

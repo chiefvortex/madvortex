@@ -52,7 +52,7 @@ function AnimatedNumber({
 
 export function About() {
   return (
-    <section id="about" className="py-24 md:py-32 border-t border-[rgba(255,255,255,0.06)]">
+    <section id="about" className="py-36 md:py-40">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left: Description */}
@@ -62,10 +62,16 @@ export function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-8">
+            <h2 
+              className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-8"
+              style={{ letterSpacing: "-0.02em" }}
+            >
               About the Studio
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed text-pretty">
+            <p 
+              className="text-lg text-muted-foreground text-pretty"
+              style={{ lineHeight: 1.7 }}
+            >
               Vortex is a creative engineering studio based in Bangalore. We build
               high-fidelity visual systems for brands operating at the frontier —
               from global retail to emerging technology. We combine cinematic craft

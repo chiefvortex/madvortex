@@ -18,14 +18,15 @@ export function TrustedBy() {
   const duplicatedBrands = [...brands, ...brands]
 
   return (
-    <section className="py-16 md:py-24 border-t border-[rgba(255,255,255,0.06)] overflow-hidden">
+    <section className="py-20 md:py-28 border-t border-[rgba(255,255,255,0.06)] overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-24 mb-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="font-heading text-xl font-semibold tracking-tight text-foreground"
+          className="font-heading text-xl font-medium tracking-tight text-foreground"
+          style={{ letterSpacing: "-0.02em" }}
         >
           Trusted By
         </motion.h2>
@@ -45,15 +46,16 @@ export function TrustedBy() {
           transition={{ duration: 0.8 }}
           className="flex"
         >
-          <div className="flex animate-marquee">
+          <div className="flex animate-marquee will-change-transform">
             {duplicatedBrands.map((brand, index) => (
               <div
                 key={`${brand}-${index}`}
-                className="flex items-center justify-center px-8 md:px-16"
+                className="flex items-center px-6 md:px-10"
               >
-                <span className="text-sm md:text-base tracking-[0.3em] text-muted-foreground font-mono whitespace-nowrap">
+                <span className="text-base md:text-lg tracking-[0.25em] text-muted-foreground font-mono whitespace-nowrap">
                   {brand}
                 </span>
+                <span className="ml-6 md:ml-10 text-muted-foreground/30 text-lg">/</span>
               </div>
             ))}
           </div>
