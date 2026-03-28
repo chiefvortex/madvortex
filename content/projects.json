@@ -1,0 +1,112 @@
+[
+  {
+    "id": "VX-001",
+    "slug": "one8-virat-kohli",
+    "client": "ONE8 × VIRAT KOHLI",
+    "title": "Brand Campaign",
+    "category": "COMMERCIAL",
+    "role": "DIRECTOR / VFX LEAD",
+    "year": "2024",
+    "description": "A high-energy commercial campaign for Virat Kohli's lifestyle brand ONE8. The project demanded seamless integration of live-action footage with CGI environments, creating an aspirational visual language that matched the athlete's intensity and precision.",
+    "featured": true
+  },
+  {
+    "id": "VX-002",
+    "slug": "nike-campaign",
+    "client": "NIKE",
+    "title": "Just Do It — India",
+    "category": "COMMERCIAL",
+    "role": "VFX SUPERVISOR",
+    "year": "2023",
+    "description": "VFX supervision for Nike's Indian market campaign. Complex compositing work combining multiple shoot locations with digitally enhanced environments. Every frame engineered to embody the relentless spirit of the brand.",
+    "featured": true
+  },
+  {
+    "id": "VX-003",
+    "slug": "amd-processors",
+    "client": "AMD",
+    "title": "Ryzen Launch",
+    "category": "COMMERCIAL",
+    "role": "CGI LEAD",
+    "year": "2023",
+    "description": "CGI product visualization for AMD's Ryzen processor launch. Photorealistic chip renders with abstract particle systems representing raw computational power. Technical precision meets visual poetry.",
+    "featured": true
+  },
+  {
+    "id": "VX-004",
+    "slug": "spotify-wrapped",
+    "client": "SPOTIFY",
+    "title": "Wrapped Campaign",
+    "category": "COMMERCIAL",
+    "role": "MOTION DIRECTOR",
+    "year": "2023",
+    "description": "Motion design direction for Spotify's annual Wrapped campaign. Dynamic, data-driven visuals that transformed listening statistics into captivating animated sequences.",
+    "featured": false
+  },
+  {
+    "id": "VX-005",
+    "slug": "ikea-home",
+    "client": "IKEA",
+    "title": "Home Stories",
+    "category": "COMMERCIAL",
+    "role": "VFX ARTIST",
+    "year": "2022",
+    "description": "VFX work for IKEA's regional campaign. Invisible effects that enhanced real home environments while maintaining the brand's signature warmth and accessibility.",
+    "featured": false
+  },
+  {
+    "id": "VX-006",
+    "slug": "qatar-airways",
+    "client": "QATAR AIRWAYS",
+    "title": "Above the Clouds",
+    "category": "COMMERCIAL",
+    "role": "VFX SUPERVISOR",
+    "year": "2022",
+    "description": "Supervising VFX for Qatar Airways' premium travel experience campaign. Seamless sky replacements, cabin enhancements, and that impossible-to-achieve luxury glow.",
+    "featured": false
+  },
+  {
+    "id": "VX-007",
+    "slug": "space-web3",
+    "client": "SPACE",
+    "title": "Genesis Collection",
+    "category": "WEB3",
+    "role": "CREATIVE DIRECTOR",
+    "year": "2024",
+    "description": "Creative direction for a generative art NFT collection. Building visual systems that could produce 10,000 unique pieces while maintaining artistic coherence.",
+    "featured": false
+  },
+  {
+    "id": "VX-008",
+    "slug": "the-blackout",
+    "client": "INDEPENDENT",
+    "title": "The Blackout",
+    "category": "SHORT FILM",
+    "role": "DIRECTOR",
+    "year": "2021",
+    "description": "A personal short film exploring memory and identity through fragmented narratives. Shot in Bangalore during lockdown, processed through analog and digital distortion.",
+    "featured": false
+  },
+  {
+    "id": "VX-009",
+    "slug": "oku-web3",
+    "client": "OKU",
+    "title": "Visual Identity",
+    "category": "WEB3",
+    "role": "ART DIRECTOR",
+    "year": "2023",
+    "description": "Complete visual identity and motion system for OKU, a decentralized social protocol. Clean, geometric, and built for infinite scalability.",
+    "featured": false
+  },
+  {
+    "id": "VX-010",
+    "slug": "burst-web3",
+    "client": "BURST",
+    "title": "Launch Campaign",
+    "category": "WEB3",
+    "role": "VFX LEAD",
+    "year": "2024",
+    "description": "VFX and motion graphics for Burst's market launch. High-frequency visuals that matched the platform's trading speed and intensity.",
+    "featured": false
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "name": "vortex-studio",
+  "name": "madvortex",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -16,7 +16,9 @@
     "lucide-react": "^0.469.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^2.6.0",
+    "gray-matter": "^4.0.3",
+    "next-mdx-remote": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

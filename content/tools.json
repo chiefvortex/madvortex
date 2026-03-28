@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ai-color-grader",
+    "name": "AI Color Grader",
+    "description": "Automated color grading from reference frames. Upload a reference, get a LUT.",
+    "builtWith": ["Python", "OpenCV", "TensorFlow"],
+    "status": "IN DEVELOPMENT"
+  },
+  {
+    "id": "prompt-optimizer",
+    "name": "Prompt Optimizer",
+    "description": "A/B test AI prompts at scale. Find what works, ditch what doesn't.",
+    "builtWith": ["Next.js", "OpenAI API", "PostgreSQL"],
+    "status": "IN DEVELOPMENT"
+  },
+  {
+    "id": "thumbnail-predictor",
+    "name": "Thumbnail Score Predictor",
+    "description": "Predict YouTube thumbnail CTR before you publish. ML-powered visual analysis.",
+    "builtWith": ["Python", "PyTorch", "FastAPI"],
+    "status": "IN DEVELOPMENT"
+  }
+]

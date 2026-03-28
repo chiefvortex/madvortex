@@ -1,25 +1,24 @@
-import { Header } from "@/components/sections/header"
-import { Hero } from "@/components/sections/hero"
-import { SelectedWork } from "@/components/sections/selected-work"
-import { About } from "@/components/sections/about"
-import { Services } from "@/components/sections/services"
-import { TrustedBy } from "@/components/sections/trusted-by"
-import { Contact } from "@/components/sections/contact"
-import { Footer } from "@/components/sections/footer"
+import { BootSequence } from "@/components/boot-sequence"
+import { Nav } from "@/components/nav"
+import { Hero } from "@/components/hero"
+import { WorkPreview } from "@/components/work-preview"
+import { Intro } from "@/components/intro"
+import { Currently } from "@/components/currently"
+import { ContactStrip } from "@/components/contact-strip"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <>
-      <Header />
+    <BootSequence>
+      <Nav />
       <main>
         <Hero />
-        <SelectedWork />
-        <About />
-        <Services />
-        <TrustedBy />
-        <Contact />
+        <WorkPreview />
+        <Intro />
+        <Currently />
+        <ContactStrip />
       </main>
       <Footer />
-    </>
+    </BootSequence>
   )
 }
