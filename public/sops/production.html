@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>External Collaborator SOP — Vortex Labs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root {
+    --deep-black: #0A0A0A;
+    --abyss-white: #E8E8E8;
+    --tide-grey: #C8C8C8;
+    --biolumen-blue: #0033FF;
+    --kraken-red: #FF0000;
+    --coral-green: #66FF00;
+    --surface: #FFFFFF;
+    --surface-alt: #F5F5F5;
+    --text-primary: #0A0A0A;
+    --text-secondary: #555555;
+    --border-light: #E0E0E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--deep-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgba(0, 51, 255, 0.08);
+    border-radius: 0;
+    transform: rotate(45deg);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -15%;
+    width: 800px;
+    height: 800px;
+    border: 1px solid rgba(0, 51, 255, 0.04);
+    border-radius: 0;
+    transform: rotate(45deg);
+  }
+
+  .cover-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1;
+  }
+
+  .cover-logo svg { width: 32px; height: 32px; }
+
+  .cover-logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232, 232, 232, 0.7);
+  }
+
+  .cover-content {
+    z-index: 1;
+    max-width: 680px;
+  }
+
+  .cover-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--biolumen-blue);
+    margin-bottom: 20px;
+  }
+
+  .cover-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--abyss-white);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .cover-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(232, 232, 232, 0.5);
+    line-height: 1.6;
+    max-width: 480px;
+  }
+
+  .cover-meta {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0;
+    border-top: 1px solid rgba(232, 232, 232, 0.1);
+    padding-top: 24px;
+  }
+
+  .cover-meta-item {
+    padding: 0 24px 0 0;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(232, 232, 232, 0.35);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(232, 232, 232, 0.8);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    margin-bottom: 64px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .toc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: color 0.15s;
+  }
+
+  .toc-item:hover { color: var(--biolumen-blue); }
+
+  .toc-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--biolumen-blue);
+    min-width: 24px;
+  }
+
+  .toc-label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    margin-bottom: 56px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--deep-black);
+  }
+
+  .section-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--biolumen-blue);
+    min-width: 28px;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--deep-black);
+    text-transform: uppercase;
+  }
+
+  .section p {
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  /* ── TABLES ── */
+  .sop-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+  }
+
+  .sop-table thead th {
+    background: var(--deep-black);
+    color: var(--abyss-white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    border: none;
+  }
+
+  .sop-table tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .sop-table tbody tr:nth-child(even) {
+    background: var(--surface-alt);
+  }
+
+  /* ── WORKFLOW STEPS ── */
+  .workflow-step {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--surface-alt);
+    border-left: 3px solid var(--biolumen-blue);
+  }
+
+  .step-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--biolumen-blue);
+    line-height: 1;
+    min-width: 40px;
+  }
+
+  .step-content { flex: 1; }
+
+  .step-action {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .step-owner {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--biolumen-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .step-detail {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .step-deadline {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--deep-black);
+    background: var(--abyss-white);
+    padding: 2px 8px;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── DIAGRAMS ── */
+  .diagram-container {
+    margin: 32px 0;
+    padding: 32px;
+    background: #FAFAFA;
+    border: 1px solid var(--border-light);
+  }
+
+  .diagram-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .diagram-caption {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-left: 3px solid var(--biolumen-blue);
+    background: rgba(0, 51, 255, 0.03);
+    font-size: 14px;
+  }
+
+  .callout-critical {
+    border-left-color: var(--kraken-red);
+    background: rgba(255, 0, 0, 0.02);
+  }
+
+  .callout-success {
+    border-left-color: var(--coral-green);
+    background: rgba(102, 255, 0, 0.02);
+  }
+
+  /* ── CODE / NAMING CONVENTION ── */
+  .naming-convention {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 14px;
+    background: var(--deep-black);
+    color: var(--abyss-white);
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    line-height: 1.8;
+  }
+
+  .naming-convention .highlight {
+    color: var(--biolumen-blue);
+    font-weight: 600;
+  }
+
+  /* ── ESCALATION TABLE ── */
+  .escalation-row-critical td:first-child {
+    border-left: 3px solid var(--kraken-red);
+  }
+
+  /* ── KPI / SUMMARY CARDS ── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .kpi-card {
+    padding: 20px;
+    background: var(--surface-alt);
+    border-top: 3px solid var(--biolumen-blue);
+  }
+
+  .kpi-card-critical { border-top-color: var(--kraken-red); }
+  .kpi-card-success { border-top-color: var(--coral-green); }
+
+  .kpi-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--deep-black);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  /* ── ROLE CARDS ── */
+  .role-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .role-card {
+    padding: 20px;
+    background: var(--surface-alt);
+    border-left: 3px solid var(--biolumen-blue);
+  }
+
+  .role-card-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--deep-black);
+    margin-bottom: 2px;
+  }
+
+  .role-card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--biolumen-blue);
+    margin-bottom: 8px;
+  }
+
+  .role-card-responsibilities {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ── TOOL / ICON GRID ── */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .tool-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border-light);
+  }
+
+  .tool-card-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--deep-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .tool-card-icon svg { width: 20px; height: 20px; }
+
+  .tool-card-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--deep-black);
+  }
+
+  .tool-card-purpose {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  /* ── TIMELINE BAR ── */
+  .timeline {
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-light);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .timeline-marker {
+    width: 38px;
+    height: 38px;
+    background: var(--surface);
+    border: 2px solid var(--biolumen-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .timeline-marker-active {
+    background: var(--biolumen-blue);
+  }
+
+  .timeline-marker-active .timeline-marker-num { color: #FFFFFF; }
+
+  .timeline-marker-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--biolumen-blue);
+  }
+
+  .timeline-body { flex: 1; padding-top: 6px; }
+
+  .timeline-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--deep-black);
+    margin-bottom: 2px;
+  }
+
+  .timeline-owner {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--biolumen-blue);
+    margin-bottom: 4px;
+  }
+
+  .timeline-detail {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .timeline-deadline {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--deep-black);
+    background: var(--abyss-white);
+    padding: 2px 8px;
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── STATUS BADGES ── */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+  }
+
+  .badge-blue { background: var(--biolumen-blue); color: #FFFFFF; }
+  .badge-red { background: var(--kraken-red); color: #FFFFFF; }
+  .badge-green { background: var(--coral-green); color: var(--deep-black); }
+  .badge-grey { background: var(--tide-grey); color: var(--deep-black); }
+  .badge-black { background: var(--deep-black); color: var(--abyss-white); }
+
+  /* ── SPLIT PANEL (text left, visual right) ── */
+  .split-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin: 24px 0;
+    align-items: start;
+  }
+
+  .split-panel-text {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+
+  .split-panel-visual {
+    background: #FAFAFA;
+    border: 1px solid var(--border-light);
+    padding: 24px;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    margin: 20px 0;
+  }
+
+  .checklist-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    font-size: 14px;
+  }
+
+  .checklist-icon {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--biolumen-blue);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .checklist-icon-done {
+    background: var(--biolumen-blue);
+    position: relative;
+  }
+
+  .checklist-icon-done::after {
+    content: '✓';
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ── ESCALATION SEVERITY BAR ── */
+  .severity-bar {
+    display: flex;
+    gap: 0;
+    margin: 24px 0;
+    overflow: hidden;
+  }
+
+  .severity-level {
+    flex: 1;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .severity-low { background: var(--surface-alt); color: var(--text-primary); }
+  .severity-medium { background: var(--tide-grey); color: var(--deep-black); }
+  .severity-high { background: var(--biolumen-blue); color: #FFFFFF; }
+  .severity-critical { background: var(--kraken-red); color: #FFFFFF; }
+
+  .severity-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .severity-desc {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 640px) {
+    .split-panel { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .role-grid { grid-template-columns: 1fr; }
+    .tool-grid { grid-template-columns: 1fr; }
+    .severity-bar { flex-direction: column; }
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-logo svg { width: 20px; height: 20px; }
+
+  .footer-logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .footer-info {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    .cover { min-height: 100vh; page-break-after: always; }
+    .section { page-break-inside: avoid; }
+    .diagram-container { page-break-inside: avoid; }
+    body { font-size: 12px; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .cover { padding: 32px 24px; }
+    .content { padding: 40px 20px; }
+    .cover-title { font-size: 32px; }
+    .cover-meta { grid-template-columns: 1fr 1fr; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     COVER PAGE
+     ═══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-logo">
+    <svg viewBox="0 0 124 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M57.2188 79.5474L83.8471 109.234H123.8L75.0703 59.2979L57.2188 79.5474Z" fill="#E8E8E8"/>
+      <path d="M123.8 0H83.8471L57.2188 30.1698H94.3107L123.8 0Z" fill="#0033FF"/>
+      <path d="M69.7027 54.6178L58.4598 67.4969C58.3572 67.6172 58.2118 67.7804 58.0279 67.9909C56.0906 70.2205 50.1035 77.0767 49.6288 77.6137L48.7265 78.5974L29.2256 99.8535L20.617 109.236H0V87.1076L9.94287 76.7889L19.2101 67.1704L32.7409 53.6813L21.0404 42.0781L10.5159 31.1365L0 20.1992V0H22.503L30.0467 8.78507L47.9995 29.6931C48.085 29.7962 48.3758 30.1313 48.8077 30.6296C50.8861 33.0224 56.2489 39.187 58.0407 41.2533C58.2161 41.4552 58.3572 41.6185 58.4598 41.7345L69.7027 54.6178Z" fill="#E8E8E8"/>
+    </svg>
+    <span class="cover-logo-text">Vortex Labs</span>
+  </div>
+
+  <div class="cover-content">
+    <div class="cover-label">Standard Operating Procedure</div>
+    <h1 class="cover-title">External Collaborator Operating Standard</h1>
+    <p class="cover-subtitle">Governs onboarding, communication, file structure, review flow, and clean handover for all freelance and contract collaborators on Vortex client projects.</p>
+  </div>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Owner</div>
+      <div class="cover-meta-value">Naveen Kumar</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Version</div>
+      <div class="cover-meta-value">v1.1</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Date</div>
+      <div class="cover-meta-value">March 2026</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Status</div>
+      <div class="cover-meta-value">Active</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CONTENT
+     ═══════════════════════════════════════════ -->
+<div class="content">
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc">
+    <div class="toc-title">Contents</div>
+    <div class="toc-list">
+      <a class="toc-item" href="#section-1">
+        <span class="toc-number">01</span>
+        <span class="toc-label">Purpose & Scope</span>
+      </a>
+      <a class="toc-item" href="#section-2">
+        <span class="toc-number">02</span>
+        <span class="toc-label">Operating Standard</span>
+      </a>
+      <a class="toc-item" href="#section-3">
+        <span class="toc-number">03</span>
+        <span class="toc-label">Ownership & Decision Flow</span>
+      </a>
+      <a class="toc-item" href="#section-4">
+        <span class="toc-number">04</span>
+        <span class="toc-label">Project Lifecycle</span>
+      </a>
+      <a class="toc-item" href="#section-5">
+        <span class="toc-number">05</span>
+        <span class="toc-label">Onboarding Process</span>
+      </a>
+      <a class="toc-item" href="#section-6">
+        <span class="toc-number">06</span>
+        <span class="toc-label">Communication Protocol</span>
+      </a>
+      <a class="toc-item" href="#section-7">
+        <span class="toc-number">07</span>
+        <span class="toc-label">Folder Architecture</span>
+      </a>
+      <a class="toc-item" href="#section-8">
+        <span class="toc-number">08</span>
+        <span class="toc-label">File Naming Convention</span>
+      </a>
+      <a class="toc-item" href="#section-9">
+        <span class="toc-number">09</span>
+        <span class="toc-label">Execution Standard</span>
+      </a>
+      <a class="toc-item" href="#section-10">
+        <span class="toc-number">10</span>
+        <span class="toc-label">Review & Revision Protocol</span>
+      </a>
+      <a class="toc-item" href="#section-11">
+        <span class="toc-number">11</span>
+        <span class="toc-label">Final Delivery Standard</span>
+      </a>
+      <a class="toc-item" href="#section-12">
+        <span class="toc-number">12</span>
+        <span class="toc-label">Quality Gates</span>
+      </a>
+      <a class="toc-item" href="#section-13">
+        <span class="toc-number">13</span>
+        <span class="toc-label">Tools & Access</span>
+      </a>
+      <a class="toc-item" href="#section-14">
+        <span class="toc-number">14</span>
+        <span class="toc-label">Rules of Engagement</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: PURPOSE & SCOPE -->
+  <div class="section" id="section-1">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Purpose & Scope</h2>
+    </div>
+
+    <p>This SOP defines how Vortex works with external collaborators on client projects. It governs onboarding, communication, file structure, review flow, and final handover.</p>
+
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-value">7</div>
+        <div class="kpi-label">Lifecycle Stages</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">6</div>
+        <div class="kpi-label">Quality Gates</div>
+      </div>
+      <div class="kpi-card kpi-card-critical">
+        <div class="kpi-value">0</div>
+        <div class="kpi-label">Negotiable Core Rules</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 24px;">Applies to all external collaborators contributing to client-facing work: editors, motion designers, 3D artists, compositors, graphic designers, illustrators, sound designers, and specialists. The goal is zero ambiguity. Any freelancer entering a Vortex project should know exactly what they own, who they report to, where files live, how versions work, and what done actually means.</p>
+  </div>
+
+  <!-- SECTION 2: OPERATING STANDARD -->
+  <div class="section" id="section-2">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Operating Standard</h2>
+    </div>
+
+    <p>Every freelancer is expected to function like an extension of the internal team, not an isolated vendor. Strong craft is not enough. If the work creates operational drag, the work is not complete.</p>
+
+    <div class="callout callout-critical">
+      <strong>Core Principle:</strong> The project must never depend on memory, scattered exports, verbal assumptions, or "latest" files. It must run on structure.
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Non-Negotiables</h3>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div><strong>Confidentiality First:</strong> No files, visuals, WIPs, or conversations may be shared externally or posted publicly without written approval from Naveen.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div><strong>No Direct Client Communication:</strong> All client contact flows through the assigned internal point of contact.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div><strong>No Random File Management:</strong> Files, folders, versions, and exports follow Vortex structure exactly.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div><strong>No Silence:</strong> Any blocker, delay, asset issue, or scope drift must be flagged immediately.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div><strong>No Version Chaos:</strong> File names like "final," "final-final," "latest," or "use-this" are banned.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div><strong>No Deletions Without Approval:</strong> Nothing inside the project structure may be deleted or overwritten without approval.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div><strong>Source Files Are Part of Delivery:</strong> Final handover includes organized source files unless explicitly excluded.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div><strong>Brief Before Execution:</strong> No work starts until the freelancer understands the brief, deadline, and review logic.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: OWNERSHIP & DECISION FLOW -->
+  <div class="section" id="section-3">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Ownership & Decision Flow</h2>
+    </div>
+
+    <p>Every project must have clear ownership on the Vortex side.</p>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-card-name">Naveen Kumar</div>
+        <div class="role-card-title">CEO</div>
+        <div class="role-card-responsibilities">Client relationship, creative direction, asset handoff, final approvals, escalation decisions.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-name">Devansh Kharya</div>
+        <div class="role-card-title">Ops / Project Lead</div>
+        <div class="role-card-responsibilities">Project coordination, workflow compliance, review management, file structure, delivery tracking.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-name">Freelancer</div>
+        <div class="role-card-title">External Collaborator</div>
+        <div class="role-card-responsibilities">Assigned execution, file discipline, WIP delivery, feedback implementation, clean handover.</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 24px;"><strong>Single Point of Contact Rule:</strong> Creative and client-level approvals go to Naveen. Execution, files, feedback, timelines, and process go to Devansh. If there's any doubt, escalate to Devansh first.</p>
+  </div>
+
+  <!-- SECTION 4: PROJECT LIFECYCLE -->
+  <div class="section" id="section-4">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Project Lifecycle</h2>
+    </div>
+
+    <p>Every freelancer assignment follows the same operating sequence. No stage is skipped.</p>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stage 1 -->
+        <rect x="20" y="100" width="80" height="60" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="60" y="125" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Assignment</text>
+        <text x="60" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#555555">G1: Scope</text>
+
+        <!-- Arrow 1 -->
+        <line x1="100" y1="130" x2="130" y2="130" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+        <!-- Stage 2 -->
+        <rect x="130" y="100" width="80" height="60" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="170" y="125" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Brief</text>
+        <text x="170" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#555555">Absorption</text>
+
+        <!-- Arrow 2 -->
+        <line x1="210" y1="130" x2="240" y2="130" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+        <!-- Stage 3 -->
+        <rect x="240" y="100" width="80" height="60" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="280" y="125" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Asset</text>
+        <text x="280" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#555555">Intake</text>
+
+        <!-- Arrow 3 -->
+        <line x1="320" y1="130" x2="350" y2="130" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+        <!-- Stage 4 -->
+        <rect x="350" y="100" width="80" height="60" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="390" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Execution</text>
+
+        <!-- Arrow 4 -->
+        <line x1="430" y1="130" x2="460" y2="130" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+        <!-- Stage 5 -->
+        <rect x="460" y="100" width="80" height="60" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="500" y="125" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Internal</text>
+        <text x="500" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#555555">Review</text>
+
+        <!-- Arrow 5 -->
+        <line x1="540" y1="130" x2="570" y2="130" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+        <!-- Stage 6 -->
+        <rect x="570" y="100" width="80" height="60" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="610" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Revisions</text>
+
+        <!-- Arrow 6 (back to stage 5 with feedback loop) -->
+        <path d="M 600 170 Q 600 190 550 190 Q 500 190 500 170" stroke="#FF0000" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arrowhead-red)"/>
+        <text x="550" y="205" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#FF0000">If revisions needed</text>
+
+        <!-- Arrow 7 -->
+        <line x1="610" y1="100" x2="610" y2="60" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+        <!-- Stage 7 (top) -->
+        <rect x="560" y="0" width="100" height="60" fill="#0033FF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="610" y="25" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Final</text>
+        <text x="610" y="45" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Delivery</text>
+
+        <!-- Arrow markers -->
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#0A0A0A"/>
+          </marker>
+          <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#FF0000"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="diagram-caption">Figure 1 — Seven-Stage Project Lifecycle</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker timeline-marker-active">
+          <span class="timeline-marker-num">1</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-owner">Devansh</div>
+          <div class="timeline-title">Assignment</div>
+          <div class="timeline-detail">Freelancer receives client name, project objective, role, deliverables, deadline, specs, references, and folder access.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">2</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-owner">Freelancer</div>
+          <div class="timeline-title">Brief Absorption</div>
+          <div class="timeline-detail">Review project objective, deliverable type, format, references, brand direction, source assets, review schedule.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">3</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-owner">Freelancer + Devansh</div>
+          <div class="timeline-title">Asset Intake</div>
+          <div class="timeline-detail">Confirm required materials are present: footage, logos, renders, brand assets, scripts, music, prior versions, platform specs.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">4</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-owner">Freelancer</div>
+          <div class="timeline-title">Execution</div>
+          <div class="timeline-detail">Work inside project structure, maintain organized files, keep versioning clean, hit milestones, flag blockers early.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">5</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-owner">Devansh + Pranay</div>
+          <div class="timeline-title">Internal Review</div>
+          <div class="timeline-detail">All work is reviewed internally first. Feedback flows back through assigned Vortex point of contact.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">6</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-owner">Freelancer</div>
+          <div class="timeline-title">Revisions</div>
+          <div class="timeline-detail">Execute revisions against approved notes only. Flag if feedback expands scope before proceeding.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="timeline-marker-num">7</span>
+        </div>
+        <div class="timeline-body">
+          <div class="timeline-owner">Freelancer + Devansh</div>
+          <div class="timeline-title">Final Delivery & Handover</div>
+          <div class="timeline-detail">Submit final exports, source files, linked assets, organized folder structure, clean versioning, and documentation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: ONBOARDING PROCESS -->
+  <div class="section" id="section-5">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Onboarding Process</h2>
+    </div>
+
+    <p>No freelancer should be dropped into a live project without baseline operating clarity.</p>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Onboarding Packet</h3>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>This SOP document</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Role-specific brief with deliverables</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Project folder access with naming convention rules</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Delivery checklist and brand assets / style guide</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Communication channel access if required</div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Mandatory Alignment</h3>
+
+    <p style="margin-bottom: 12px;">Before work starts, freelancer must confirm:</p>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>They have read the SOP</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>They understand the folder structure</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>They understand where WIPs go and file naming</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>They understand who to message for what</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>They understand deadline and review flow</div>
+      </div>
+    </div>
+
+    <div class="callout callout-success">
+      <strong>First Project Rule:</strong> Check-ins happen earlier, structure compliance is monitored closely, and file discipline is evaluated alongside creative quality. The first project is not only a skill test. It is an operating test.
+    </div>
+  </div>
+
+  <!-- SECTION 6: COMMUNICATION PROTOCOL -->
+  <div class="section" id="section-6">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Communication Protocol</h2>
+    </div>
+
+    <p>Most project drag comes from broken communication, not lack of talent.</p>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Communication Stack</h3>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-card-icon">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8" stroke="#FFFFFF" stroke-width="1.5"/>
+            <path d="M10 6v8M6 10h8" stroke="#FFFFFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tool-card-name">WhatsApp / Slack</div>
+          <div class="tool-card-purpose">Fast coordination, blockers, updates</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="3" width="16" height="14" stroke="#FFFFFF" stroke-width="1.5" rx="1"/>
+            <path d="M2 5h16" stroke="#FFFFFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tool-card-name">Email</div>
+          <div class="tool-card-purpose">Formal approvals, scope notes, records</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="2" width="14" height="16" stroke="#FFFFFF" stroke-width="1.5" rx="2"/>
+            <circle cx="10" cy="10" r="3" stroke="#FFFFFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tool-card-name">Frame.io / Drive Comments</div>
+          <div class="tool-card-purpose">Timestamped feedback on files</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8" stroke="#FFFFFF" stroke-width="1.5"/>
+            <path d="M10 6v8M6 10h8" stroke="#FFFFFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tool-card-name">Calls</div>
+          <div class="tool-card-purpose">Only when faster than text. Must summarize in writing after.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Response Discipline</h3>
+
+    <p style="margin-bottom: 12px;">Freelancers are expected to:</p>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Acknowledge new tasks within a reasonable working window</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Confirm receipt of instructions</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Update when blocked, at risk, or when major milestones complete</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Flag risks early. Reporting after the deadline has passed is unacceptable.</div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Proactive Updates Trigger</h3>
+
+    <p style="margin-bottom: 12px;">Freelancers must proactively update when:</p>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Working file setup is done</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>A WIP is uploaded</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>A blocker appears</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>A deadline is at risk</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Final delivery is complete</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: FOLDER ARCHITECTURE -->
+  <div class="section" id="section-7">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2 class="section-title">Folder Architecture</h2>
+    </div>
+
+    <p>This is the default folder structure for all Vortex client projects unless explicitly customized.</p>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
+        <!-- Root folder -->
+        <rect x="20" y="10" width="460" height="400" fill="none" stroke="#E0E0E0" stroke-width="1" rx="2"/>
+        <text x="40" y="30" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">CLIENTNAME_PROJECTNAME</text>
+
+        <!-- Subfolder grid -->
+        <g>
+          <!-- Column 1 -->
+          <rect x="40" y="50" width="100" height="35" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+          <text x="90" y="73" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0033FF">01_BRIEF</text>
+
+          <rect x="40" y="95" width="100" height="35" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+          <text x="90" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0033FF">02_ASSETS</text>
+
+          <rect x="40" y="140" width="100" height="35" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+          <text x="90" y="163" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0033FF">03_INTERNAL</text>
+
+          <rect x="40" y="185" width="100" height="35" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+          <text x="90" y="208" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0033FF">04_WORKING</text>
+
+          <!-- Column 2 -->
+          <rect x="160" y="50" width="100" height="35" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+          <text x="210" y="73" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0033FF">05_WIP_EXPORTS</text>
+
+          <rect x="160" y="95" width="100" height="35" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+          <text x="210" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0033FF">06_FEEDBACK</text>
+
+          <rect x="160" y="140" width="100" height="35" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+          <text x="210" y="163" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0033FF">07_FINAL</text>
+
+          <rect x="160" y="185" width="100" height="35" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+          <text x="210" y="208" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0033FF">08_SOURCE</text>
+
+          <!-- Column 3 -->
+          <rect x="280" y="50" width="100" height="35" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+          <text x="330" y="73" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0033FF">09_ARCHIVE</text>
+
+          <!-- Purpose labels -->
+          <text x="40" y="240" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#0A0A0A">STRUCTURE LOGIC</text>
+
+          <text x="40" y="265" font-family="Inter, sans-serif" font-size="11" fill="#555555">01_BRIEF: Project definition docs</text>
+          <text x="40" y="285" font-family="Inter, sans-serif" font-size="11" fill="#555555">02_ASSETS_FROM_CLIENT: Client materials</text>
+          <text x="40" y="305" font-family="Inter, sans-serif" font-size="11" fill="#555555">03_INTERNAL_ASSETS: Vortex additions</text>
+          <text x="40" y="325" font-family="Inter, sans-serif" font-size="11" fill="#555555">04_WORKING_FILES: Active production</text>
+          <text x="40" y="345" font-family="Inter, sans-serif" font-size="11" fill="#555555">05_WIP_EXPORTS: Review versions</text>
+          <text x="40" y="365" font-family="Inter, sans-serif" font-size="11" fill="#555555">06_FEEDBACK: Notes & call records</text>
+          <text x="40" y="385" font-family="Inter, sans-serif" font-size="11" fill="#555555">07_FINAL_EXPORTS: Approved outputs</text>
+        </g>
+      </svg>
+      <div class="diagram-caption">Figure 2 — Nine-Folder Project Architecture</div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: FILE NAMING CONVENTION -->
+  <div class="section" id="section-8">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2 class="section-title">File Naming Convention</h2>
+    </div>
+
+    <p>Every file must follow a clean, predictable naming structure. This prevents version chaos and makes file retrieval instant.</p>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Master Format</h3>
+
+    <div class="naming-convention">
+<span class="highlight">Client</span>_<span class="highlight">Project</span>_<span class="highlight">ContentType</span>_<span class="highlight">Description</span>_<span class="highlight">V01</span>.ext
+    </div>
+
+    <p style="margin-bottom: 12px;"><strong>Examples:</strong></p>
+    <div class="naming-convention">
+Nothing_RCB_KeyVisual_StadiumReveal_V01.psd
+AMD_ProductFilm_MainEdit_V03.prproj
+Qatar_F1_Shot05_CGIComposite_V02.aep
+Upliance_ProductFilm_Master_16x9_V05.mp4
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Review Export Format</h3>
+
+    <div class="naming-convention">
+<span class="highlight">REVIEW</span>_Client_Project_Description_V01_<span class="highlight">Date</span>.ext
+
+REVIEW_AMD_ProductFilm_MainCut_V01_20260330.mp4
+REVIEW_Nothing_RCB_KVAnimation_V02_20260330.mp4
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Final Export Format</h3>
+
+    <div class="naming-convention">
+<span class="highlight">FINAL</span>_Client_Project_Output_Platform_V01.ext
+
+FINAL_Upliance_ProductFilm_Master_16x9_V01.mp4
+FINAL_Nothing_RCB_Teaser_IGReel_V03.mp4
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Hard Rules</h3>
+
+    <div class="callout callout-critical">
+      - Always use V01, V02, V03... numbering
+      - Never use "final," "latest," "new," "updated," or "use-this"
+      - Do not overwrite an approved version without incrementing
+      - Do not create parallel naming systems inside the same project
+    </div>
+  </div>
+
+  <!-- SECTION 9: EXECUTION STANDARD -->
+  <div class="section" id="section-9">
+    <div class="section-header">
+      <span class="section-number">09</span>
+      <h2 class="section-title">Execution Standard</h2>
+    </div>
+
+    <p>Maintain professional discipline during production, not just at final delivery.</p>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">WIP Standard</h3>
+
+    <p style="margin-bottom: 12px;">A WIP must be:</p>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div>Readable, watchable, inspectable</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div>Exported properly with correct specs</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div>Correctly named following convention</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div>Placed in the correct review folder</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div>Accompanied by a clear update message</div>
+      </div>
+    </div>
+
+    <p style="margin: 20px 0; color: var(--text-secondary);"><strong>Bad WIP behavior:</strong> Screenshots instead of proper exports, broken links, unlabelled files, "see whichever is latest" messages, loose files sent on WhatsApp.</p>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Milestone Logic</h3>
+
+    <p style="margin-bottom: 12px;">Work should move in visible milestones, not last-minute dumps:</p>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Setup / asset check</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>First WIP</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Feedback pass</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Revised WIP</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Final delivery</div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Craft Standard</h3>
+
+    <p>Work submitted to Vortex should be intentional, clean, technically sound, on-brief, and review-ready.</p>
+  </div>
+
+  <!-- SECTION 10: REVIEW & REVISION PROTOCOL -->
+  <div class="section" id="section-10">
+    <div class="section-header">
+      <span class="section-number">10</span>
+      <h2 class="section-title">Review & Revision Protocol</h2>
+    </div>
+
+    <p>Prevents vague notes, endless loops, and hidden scope drift.</p>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Review Flow</h3>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- WIP Submission -->
+        <rect x="40" y="80" width="90" height="50" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="85" y="105" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">WIP</text>
+        <text x="85" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#555555">Submitted</text>
+
+        <!-- Arrow -->
+        <line x1="130" y1="105" x2="160" y2="105" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+        <!-- Internal Review -->
+        <rect x="160" y="80" width="90" height="50" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="205" y="105" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Internal</text>
+        <text x="205" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#555555">Review</text>
+
+        <!-- Decision Diamond -->
+        <polygon points="310,105 340,80 370,105 340,130" fill="#F0F0F0" stroke="#0A0A0A" stroke-width="1.5"/>
+        <text x="340" y="112" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#0A0A0A">Approved?</text>
+
+        <!-- Yes path -->
+        <line x1="370" y1="105" x2="400" y2="105" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="385" y="95" font-family="Inter, sans-serif" font-size="10" fill="#0A0A0A">Yes</text>
+
+        <!-- Final -->
+        <rect x="400" y="80" width="90" height="50" fill="#0033FF" stroke="#0033FF" stroke-width="1.5" rx="2"/>
+        <text x="445" y="105" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Final</text>
+        <text x="445" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#FFFFFF">Approved</text>
+
+        <!-- No path -->
+        <line x1="340" y1="130" x2="340" y2="160" stroke="#FF0000" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowhead-red)"/>
+        <text x="320" y="150" font-family="Inter, sans-serif" font-size="10" fill="#FF0000">No</text>
+
+        <!-- Revisions -->
+        <rect x="290" y="160" width="100" height="30" fill="#FFFFFF" stroke="#FF0000" stroke-width="1.5" rx="2"/>
+        <text x="340" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#FF0000">Revisions</text>
+
+        <!-- Loop back -->
+        <path d="M 290 175 Q 250 175 250 105 Q 250 80 160 80" stroke="#FF0000" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
+
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#0A0A0A"/>
+          </marker>
+          <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#FF0000"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="diagram-caption">Figure 3 — Review & Revision Cycle</div>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Feedback Format</h3>
+
+    <p>Feedback should ideally include timestamp or location, what is wrong, what needs to change, and whether the note is mandatory or optional.</p>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Revision Limits</h3>
+
+    <p><strong>Default expectation:</strong> 2 proper revision rounds within scope. Anything beyond signals either scope expansion, upstream brief problems, or client-side changes.</p>
+
+    <div class="callout callout-critical">
+      <strong>No Scope Drift Rule:</strong> If a new idea materially changes the work after execution has started, it is treated as new scope, not a casual revision. Examples: redesigning the visual system after WIP 1, changing output ratios across all deliverables late in process, adding fresh deliverables not in brief, replacing major assets after work is built around prior assets.
+    </div>
+  </div>
+
+  <!-- SECTION 11: FINAL DELIVERY STANDARD -->
+  <div class="section" id="section-11">
+    <div class="section-header">
+      <span class="section-number">11</span>
+      <h2 class="section-title">Final Delivery Standard</h2>
+    </div>
+
+    <p>Work is not complete when the output looks good. Work is complete when delivered cleanly.</p>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Final Delivery Must Include</h3>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Final exports (all formats specified in brief)</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Layered / source files</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Linked assets where relevant</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Packaged files if applicable</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Font notes or plugin / dependency notes if relevant</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Short readme if file setup needs explanation</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>BTS captures and process screenshots where applicable</div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Delivery Checklist</h3>
+
+    <p style="margin-bottom: 12px;">Before delivery is marked complete, confirm:</p>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Files are in correct folders (08_SOURCE_FILES_FINAL for sources)</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Version naming is clean (V01, V02, etc.)</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Exports match required specs (resolution, codec, format)</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Source files open properly with no missing links</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>No placeholder assets remain</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>No accidental duplicate clutter remains</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 12: QUALITY GATES -->
+  <div class="section" id="section-12">
+    <div class="section-header">
+      <span class="section-number">12</span>
+      <h2 class="section-title">Quality Gates</h2>
+    </div>
+
+    <p>A file cannot move forward unless it passes the relevant gate. All 6 gates are mandatory.</p>
+
+    <table class="sop-table">
+      <thead>
+        <tr>
+          <th>Gate</th>
+          <th>Criteria</th>
+          <th>Who Checks</th>
+          <th>If Fails</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>G1: Brief Fit</strong></td>
+          <td>Work matches brief and objective</td>
+          <td>Devansh</td>
+          <td>Rework against brief</td>
+        </tr>
+        <tr>
+          <td><strong>G2: Technical Integrity</strong></td>
+          <td>No broken links, corrupt files, wrong specs</td>
+          <td>Freelancer + Devansh</td>
+          <td>Fix before review</td>
+        </tr>
+        <tr>
+          <td><strong>G3: Structure Compliance</strong></td>
+          <td>Correct folder placement and naming</td>
+          <td>Devansh</td>
+          <td>Reorganize before review</td>
+        </tr>
+        <tr>
+          <td><strong>G4: Creative Quality</strong></td>
+          <td>Output is on-brand and review-ready</td>
+          <td>Pranay / Devansh</td>
+          <td>Revise craft / direction</td>
+        </tr>
+        <tr>
+          <td><strong>G5: Feedback Accuracy</strong></td>
+          <td>Notes implemented correctly</td>
+          <td>Devansh</td>
+          <td>Correct revision pass</td>
+        </tr>
+        <tr>
+          <td><strong>G6: Delivery Readiness</strong></td>
+          <td>Finals and sources are complete and organized</td>
+          <td>Devansh</td>
+          <td>Hold closure until clean</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 13: TOOLS & ACCESS -->
+  <div class="section" id="section-13">
+    <div class="section-header">
+      <span class="section-number">13</span>
+      <h2 class="section-title">Tools & Access</h2>
+    </div>
+
+    <p>These are the default platforms and tools for all Vortex collaborations.</p>
+
+    <table class="sop-table">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Purpose</th>
+          <th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Google Drive</strong></td>
+          <td>Main project folder, files, review exports, final storage</td>
+          <td>Both</td>
+        </tr>
+        <tr>
+          <td><strong>Frame.io / Drive Comments</strong></td>
+          <td>Review and timestamped feedback on actual files</td>
+          <td>Internal + freelancer</td>
+        </tr>
+        <tr>
+          <td><strong>WhatsApp / Slack</strong></td>
+          <td>Fast communication and day-to-day updates</td>
+          <td>Both</td>
+        </tr>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td>Formal communication, approvals, client records</td>
+          <td>Internal</td>
+        </tr>
+        <tr>
+          <td><strong>Production Software</strong></td>
+          <td>Premiere, AE, Resolve, 3D tools, design software</td>
+          <td>Freelancer / internal depending on role</td>
+        </tr>
+        <tr>
+          <td><strong>Offline Backup / Archive</strong></td>
+          <td>Project backup and long-term retention</td>
+          <td>Internal</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 14: RULES OF ENGAGEMENT -->
+  <div class="section" id="section-14">
+    <div class="section-header">
+      <span class="section-number">14</span>
+      <h2 class="section-title">Rules of Engagement</h2>
+    </div>
+
+    <p>These rules override convenience.</p>
+
+    <div class="callout callout-critical">
+      <strong>The system comes first.</strong> Good work delivered in a messy way still creates drag. Structure is part of quality.
+    </div>
+
+    <div class="severity-bar">
+      <div class="severity-level severity-low">
+        <div class="severity-label">ONE PROJECT</div>
+        <div class="severity-desc">One Source of Truth</div>
+      </div>
+      <div class="severity-level severity-medium">
+        <div class="severity-label">NO GHOSTING</div>
+        <div class="severity-desc">Delays happen. Silence is not acceptable.</div>
+      </div>
+      <div class="severity-level severity-high">
+        <div class="severity-label">NO UNTRACKED</div>
+        <div class="severity-desc">If it exists, it lives in project structure.</div>
+      </div>
+      <div class="severity-level severity-critical">
+        <div class="severity-label">CLEAN HANDOVER</div>
+        <div class="severity-desc">Another operator must take over without confusion.</div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 16px 0; color: var(--deep-black);">Final Principles</h3>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div>No informal approval assumptions. "I thought this was fine" is not approval.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div>Document decisions. If direction changes, it should be recorded in writing.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div>Vortex does not run on scattered talent. It runs on disciplined execution.</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon checklist-icon-done"></div>
+        <div>No sign-off, no work. No structure, no delivery. No clarity, no momentum.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="footer-logo">
+      <svg viewBox="0 0 124 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M57.2188 79.5474L83.8471 109.234H123.8L75.0703 59.2979L57.2188 79.5474Z" fill="#999"/>
+        <path d="M123.8 0H83.8471L57.2188 30.1698H94.3107L123.8 0Z" fill="#999"/>
+        <path d="M69.7027 54.6178L58.4598 67.4969C58.3572 67.6172 58.2118 67.7804 58.0279 67.9909C56.0906 70.2205 50.1035 77.0767 49.6288 77.6137L48.7265 78.5974L29.2256 99.8535L20.617 109.236H0V87.1076L9.94287 76.7889L19.2101 67.1704L32.7409 53.6813L21.0404 42.0781L10.5159 31.1365L0 20.1992V0H22.503L30.0467 8.78507L47.9995 29.6931C48.085 29.7962 48.3758 30.1313 48.8077 30.6296C50.8861 33.0224 56.2489 39.187 58.0407 41.2533C58.2161 41.4552 58.3572 41.6185 58.4598 41.7345L69.7027 54.6178Z" fill="#999"/>
+      </svg>
+      <span class="footer-logo-text">Vortex Labs</span>
+    </div>
+    <div class="footer-info">External Collaborator SOP — v1.1 — March 2026</div>
+  </div>
+
+</div>
+
+</body>
+</html>

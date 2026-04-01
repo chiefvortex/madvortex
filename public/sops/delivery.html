@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Delivery SOP — Vortex Labs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root {
+    --deep-black: #0A0A0A;
+    --abyss-white: #E8E8E8;
+    --tide-grey: #C8C8C8;
+    --biolumen-blue: #0033FF;
+    --kraken-red: #FF0000;
+    --coral-green: #66FF00;
+    --surface: #FFFFFF;
+    --surface-alt: #F5F5F5;
+    --text-primary: #0A0A0A;
+    --text-secondary: #555555;
+    --border-light: #E0E0E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--deep-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgba(0, 51, 255, 0.08);
+    border-radius: 0;
+    transform: rotate(45deg);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -15%;
+    width: 800px;
+    height: 800px;
+    border: 1px solid rgba(0, 51, 255, 0.04);
+    border-radius: 0;
+    transform: rotate(45deg);
+  }
+
+  .cover-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1;
+  }
+
+  .cover-logo svg { width: 32px; height: 32px; }
+
+  .cover-logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232, 232, 232, 0.7);
+  }
+
+  .cover-content {
+    z-index: 1;
+    max-width: 680px;
+  }
+
+  .cover-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--biolumen-blue);
+    margin-bottom: 20px;
+  }
+
+  .cover-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--abyss-white);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .cover-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(232, 232, 232, 0.5);
+    line-height: 1.6;
+    max-width: 480px;
+  }
+
+  .cover-meta {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0;
+    border-top: 1px solid rgba(232, 232, 232, 0.1);
+    padding-top: 24px;
+  }
+
+  .cover-meta-item { padding: 0 24px 0 0; }
+
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(232, 232, 232, 0.35);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(232, 232, 232, 0.8);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    margin-bottom: 64px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .toc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: color 0.15s;
+  }
+
+  .toc-item:hover { color: var(--biolumen-blue); }
+
+  .toc-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--biolumen-blue);
+    min-width: 24px;
+  }
+
+  .toc-label { font-size: 14px; font-weight: 500; }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 56px; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--deep-black);
+  }
+
+  .section-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--biolumen-blue);
+    min-width: 28px;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--deep-black);
+    text-transform: uppercase;
+  }
+
+  .section p {
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  /* ── TABLES ── */
+  .sop-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+  }
+
+  .sop-table thead th {
+    background: var(--deep-black);
+    color: var(--abyss-white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    border: none;
+  }
+
+  .sop-table tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .sop-table tbody tr:nth-child(even) { background: var(--surface-alt); }
+
+  /* ── WORKFLOW STEPS ── */
+  .workflow-step {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--surface-alt);
+    border-left: 3px solid var(--biolumen-blue);
+  }
+
+  .step-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--biolumen-blue);
+    line-height: 1;
+    min-width: 40px;
+  }
+
+  .step-content { flex: 1; }
+
+  .step-action { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+
+  .step-owner {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--biolumen-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .step-detail {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .step-deadline {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--deep-black);
+    background: var(--abyss-white);
+    padding: 2px 8px;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── DIAGRAMS ── */
+  .diagram-container {
+    margin: 32px 0;
+    padding: 32px;
+    background: #FAFAFA;
+    border: 1px solid var(--border-light);
+  }
+
+  .diagram-container svg { width: 100%; height: auto; display: block; }
+
+  .diagram-caption {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-left: 3px solid var(--biolumen-blue);
+    background: rgba(0, 51, 255, 0.03);
+    font-size: 14px;
+  }
+
+  .callout-critical {
+    border-left-color: var(--kraken-red);
+    background: rgba(255, 0, 0, 0.02);
+  }
+
+  .callout-success {
+    border-left-color: var(--coral-green);
+    background: rgba(102, 255, 0, 0.02);
+  }
+
+  /* ── CODE / NAMING CONVENTION ── */
+  .naming-convention {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 14px;
+    background: var(--deep-black);
+    color: var(--abyss-white);
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    line-height: 1.8;
+  }
+
+  .naming-convention .highlight {
+    color: var(--biolumen-blue);
+    font-weight: 600;
+  }
+
+  /* ── KPI / SUMMARY CARDS ── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .kpi-card {
+    padding: 20px;
+    background: var(--surface-alt);
+    border-top: 3px solid var(--biolumen-blue);
+  }
+
+  .kpi-card-critical { border-top-color: var(--kraken-red); }
+  .kpi-card-success { border-top-color: var(--coral-green); }
+
+  .kpi-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--deep-black);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  /* ── ROLE CARDS ── */
+  .role-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .role-card {
+    padding: 20px;
+    background: var(--surface-alt);
+    border-left: 3px solid var(--biolumen-blue);
+  }
+
+  .role-card-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--deep-black);
+    margin-bottom: 2px;
+  }
+
+  .role-card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--biolumen-blue);
+    margin-bottom: 8px;
+  }
+
+  .role-card-responsibilities {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ── TOOL / ICON GRID ── */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .tool-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border-light);
+  }
+
+  .tool-card-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--deep-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .tool-card-icon svg { width: 20px; height: 20px; }
+
+  .tool-card-name { font-size: 13px; font-weight: 600; color: var(--deep-black); }
+  .tool-card-purpose { font-size: 11px; color: var(--text-secondary); }
+
+  /* ── CHECKLIST ── */
+  .checklist { margin: 20px 0; }
+
+  .checklist-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    font-size: 14px;
+  }
+
+  .checklist-icon {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--biolumen-blue);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── SEVERITY BAR ── */
+  .severity-bar {
+    display: flex;
+    gap: 0;
+    margin: 24px 0;
+    overflow: hidden;
+  }
+
+  .severity-level {
+    flex: 1;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .severity-low { background: var(--surface-alt); color: var(--text-primary); }
+  .severity-medium { background: var(--tide-grey); color: var(--deep-black); }
+  .severity-high { background: var(--biolumen-blue); color: #FFFFFF; }
+  .severity-critical { background: var(--kraken-red); color: #FFFFFF; }
+
+  .severity-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .severity-desc { font-size: 12px; line-height: 1.4; }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    margin-right: 6px;
+  }
+
+  .badge-blue { background: var(--biolumen-blue); color: #FFFFFF; }
+  .badge-red { background: var(--kraken-red); color: #FFFFFF; }
+  .badge-green { background: var(--coral-green); color: var(--deep-black); }
+  .badge-black { background: var(--deep-black); color: var(--abyss-white); }
+
+  /* ── SPLIT PANEL ── */
+  .split-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin: 24px 0;
+    align-items: start;
+  }
+
+  .split-panel-text { font-size: 14px; color: var(--text-primary); line-height: 1.7; }
+
+  .split-panel-visual {
+    background: #FAFAFA;
+    border: 1px solid var(--border-light);
+    padding: 24px;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo { display: flex; align-items: center; gap: 8px; }
+  .footer-logo svg { width: 20px; height: 20px; }
+
+  .footer-logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .footer-info { font-size: 11px; color: var(--text-secondary); }
+
+  @media print {
+    .cover { min-height: 100vh; page-break-after: always; }
+    .section { page-break-inside: avoid; }
+    .diagram-container { page-break-inside: avoid; }
+    body { font-size: 12px; }
+  }
+
+  @media (max-width: 640px) {
+    .cover { padding: 32px 24px; }
+    .content { padding: 40px 20px; }
+    .cover-title { font-size: 32px; }
+    .cover-meta { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .split-panel { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .role-grid { grid-template-columns: 1fr; }
+    .tool-grid { grid-template-columns: 1fr; }
+    .severity-bar { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-logo">
+    <svg viewBox="0 0 124 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M57.2188 79.5474L83.8471 109.234H123.8L75.0703 59.2979L57.2188 79.5474Z" fill="#E8E8E8"/>
+      <path d="M123.8 0H83.8471L57.2188 30.1698H94.3107L123.8 0Z" fill="#0033FF"/>
+      <path d="M69.7027 54.6178L58.4598 67.4969C58.3572 67.6172 58.2118 67.7804 58.0279 67.9909C56.0906 70.2205 50.1035 77.0767 49.6288 77.6137L48.7265 78.5974L29.2256 99.8535L20.617 109.236H0V87.1076L9.94287 76.7889L19.2101 67.1704L32.7409 53.6813L21.0404 42.0781L10.5159 31.1365L0 20.1992V0H22.503L30.0467 8.78507L47.9995 29.6931C48.085 29.7962 48.3758 30.1313 48.8077 30.6296C50.8861 33.0224 56.2489 39.187 58.0407 41.2533C58.2161 41.4552 58.3572 41.6185 58.4598 41.7345L69.7027 54.6178Z" fill="#E8E8E8"/>
+    </svg>
+    <span class="cover-logo-text">Vortex Labs</span>
+  </div>
+
+  <div class="cover-content">
+    <div class="cover-label">Standard Operating Procedure</div>
+    <h1 class="cover-title">Client Delivery</h1>
+    <p class="cover-subtitle">Quality assurance, file organization, and client review workflow for project deliverables.</p>
+  </div>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Owner</div>
+      <div class="cover-meta-value">Naveen Kumar (CEO)</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Version</div>
+      <div class="cover-meta-value">v3.0</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Date</div>
+      <div class="cover-meta-value">March 2026</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Status</div>
+      <div class="cover-meta-value">Active</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc">
+    <div class="toc-title">Contents</div>
+    <div class="toc-list">
+      <a class="toc-item" href="#section-1"><span class="toc-number">01</span><span class="toc-label">Overview</span></a>
+      <a class="toc-item" href="#section-2"><span class="toc-number">02</span><span class="toc-label">Scope</span></a>
+      <a class="toc-item" href="#section-3"><span class="toc-number">03</span><span class="toc-label">Prerequisites</span></a>
+      <a class="toc-item" href="#section-4"><span class="toc-number">04</span><span class="toc-label">Tools & Platforms</span></a>
+      <a class="toc-item" href="#section-5"><span class="toc-number">05</span><span class="toc-label">Workflow</span></a>
+      <a class="toc-item" href="#section-6"><span class="toc-number">06</span><span class="toc-label">File Naming Convention</span></a>
+      <a class="toc-item" href="#section-7"><span class="toc-number">07</span><span class="toc-label">Folder Structure</span></a>
+      <a class="toc-item" href="#section-8"><span class="toc-number">08</span><span class="toc-label">Client Communication</span></a>
+      <a class="toc-item" href="#section-9"><span class="toc-number">09</span><span class="toc-label">Failure Cases & Escalation</span></a>
+      <a class="toc-item" href="#section-10"><span class="toc-number">10</span><span class="toc-label">Version History</span></a>
+    </div>
+  </nav>
+
+  <!-- SECTION 1: OVERVIEW -->
+  <div class="section" id="section-1">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Overview</h2>
+    </div>
+    <p>Every deliverable passes through two internal approval gates before the client sees it. No exceptions, no shortcuts.</p>
+
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-value">2</div>
+        <div class="kpi-label">Approval Gates</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">24h</div>
+        <div class="kpi-label">QC Turnaround</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">6</div>
+        <div class="kpi-label">Workflow Steps</div>
+      </div>
+      <div class="kpi-card kpi-card-critical">
+        <div class="kpi-value">0</div>
+        <div class="kpi-label">Skippable Steps</div>
+      </div>
+    </div>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-card-name">Pranay Bubna</div>
+        <div class="role-card-title">QC Lead</div>
+        <div class="role-card-responsibilities">Reviews all renders for technical quality. First gate.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-name">Naveen Kumar</div>
+        <div class="role-card-title">Final Sign-Off</div>
+        <div class="role-card-responsibilities">Last gate before client sees anything.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-name">Artist</div>
+        <div class="role-card-title">Creator</div>
+        <div class="role-card-responsibilities">Exports renders with correct naming and specs.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: SCOPE -->
+  <div class="section" id="section-2">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Scope</h2>
+    </div>
+    <p>
+      Applies to all project deliverables moving to client review.
+      <span class="badge badge-blue">All Artists</span>
+      <span class="badge badge-black">Every Project</span>
+      <span class="badge badge-red">No Exceptions</span>
+    </p>
+  </div>
+
+  <!-- SECTION 3: PREREQUISITES -->
+  <div class="section" id="section-3">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Prerequisites</h2>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Project brief signed off by Naveen</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Access to project's Frame.io workspace</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Access to project folder on Google Drive</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>File naming convention understood (see Section 06)</div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon"></div>
+        <div>Render specs confirmed with Pranay before export</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: TOOLS & PLATFORMS -->
+  <div class="section" id="section-4">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Tools & Platforms</h2>
+    </div>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-card-icon">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="10,2 18,18 2,18" stroke="#FFF" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tool-card-name">Frame.io</div>
+          <div class="tool-card-purpose">Client review and feedback</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="7" stroke="#FFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tool-card-name">Google Drive</div>
+          <div class="tool-card-purpose">File storage and archive</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="6" width="14" height="8" stroke="#FFF" stroke-width="1.5"/>
+            <line x1="3" y1="6" x2="10" y2="12" stroke="#FFF" stroke-width="1.5"/>
+            <line x1="17" y1="6" x2="10" y2="12" stroke="#FFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tool-card-name">Slack</div>
+          <div class="tool-card-purpose">Internal communication</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="12" height="12" stroke="#FFF" stroke-width="1.5"/>
+            <line x1="4" y1="10" x2="16" y2="10" stroke="#FFF" stroke-width="1.5"/>
+            <line x1="10" y1="4" x2="10" y2="16" stroke="#FFF" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tool-card-name">ClickUp</div>
+          <div class="tool-card-purpose">Task tracking</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-critical">Client feedback happens ONLY on Frame.io. Not Slack, not email, not WhatsApp. Period.</div>
+  </div>
+
+  <!-- SECTION 5: WORKFLOW -->
+  <div class="section" id="section-5">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Workflow</h2>
+    </div>
+
+    <!-- Main flowchart -->
+    <div class="diagram-container">
+      <svg viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, Arial, sans-serif;">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"/>
+          </marker>
+          <marker id="arr-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#FF0000"/>
+          </marker>
+        </defs>
+
+        <!-- Step 1: Artist Exports -->
+        <rect x="300" y="20" width="180" height="48" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="390" y="48" text-anchor="middle" fill="#0A0A0A" font-size="13" font-weight="600">Artist Exports</text>
+
+        <line x1="390" y1="68" x2="390" y2="108" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Step 2: Pranay QC -->
+        <rect x="300" y="108" width="180" height="48" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="390" y="136" text-anchor="middle" fill="#0A0A0A" font-size="13" font-weight="600">Pranay QC Review</text>
+
+        <line x1="390" y1="156" x2="390" y2="196" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Diamond: QC Pass? -->
+        <polygon points="390,196 450,230 390,264 330,230" fill="#F0F0F0" stroke="#0A0A0A" stroke-width="1.5"/>
+        <text x="390" y="234" text-anchor="middle" fill="#0A0A0A" font-size="12" font-weight="600">Pass?</text>
+
+        <!-- Reject path (left) -->
+        <line x1="330" y1="230" x2="180" y2="230" stroke="#FF0000" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#arr-r)"/>
+        <text x="255" y="222" text-anchor="middle" fill="#FF0000" font-size="11" font-weight="600">No</text>
+
+        <rect x="60" y="206" width="120" height="48" fill="#FFFFFF" stroke="#FF0000" stroke-width="1.5"/>
+        <text x="120" y="234" text-anchor="middle" fill="#0A0A0A" font-size="12" font-weight="600">Fix Issues</text>
+
+        <!-- Loop back up -->
+        <path d="M 120 206 L 120 44 L 300 44" stroke="#FF0000" stroke-width="1.5" stroke-dasharray="5,5" fill="none" marker-end="url(#arr-r)"/>
+
+        <!-- Approve path (down) -->
+        <line x1="390" y1="264" x2="390" y2="304" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="405" y="288" fill="#0A0A0A" font-size="11" font-weight="600">Yes</text>
+
+        <!-- Step 3: Naveen Sign-Off -->
+        <rect x="300" y="304" width="180" height="48" fill="#0033FF"/>
+        <text x="390" y="332" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="600">Naveen Sign-Off</text>
+
+        <line x1="390" y1="352" x2="390" y2="392" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Step 4: Upload Frame.io -->
+        <rect x="300" y="392" width="180" height="48" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="390" y="420" text-anchor="middle" fill="#0A0A0A" font-size="13" font-weight="600">Upload Frame.io</text>
+
+        <line x1="480" y1="416" x2="560" y2="416" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Step 5: Client Review -->
+        <rect x="560" y="392" width="180" height="48" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="650" y="420" text-anchor="middle" fill="#0A0A0A" font-size="13" font-weight="600">Client Review</text>
+
+        <line x1="650" y1="440" x2="650" y2="480" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Step 6: Archive -->
+        <rect x="570" y="480" width="160" height="40" fill="#0A0A0A"/>
+        <text x="650" y="504" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="600">Archive</text>
+      </svg>
+      <div class="diagram-caption">Figure 1 — Delivery Workflow</div>
+    </div>
+
+    <!-- Approval chain mini-diagram -->
+    <div class="diagram-container">
+      <svg viewBox="0 0 720 100" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, Arial, sans-serif;">
+        <defs>
+          <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"/>
+          </marker>
+        </defs>
+
+        <rect x="30" y="25" width="140" height="50" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="100" y="47" text-anchor="middle" fill="#0A0A0A" font-size="12" font-weight="600">Artist</text>
+        <text x="100" y="63" text-anchor="middle" fill="#555" font-size="10">Exports renders</text>
+
+        <line x1="170" y1="50" x2="230" y2="50" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr2)"/>
+
+        <rect x="230" y="25" width="140" height="50" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="300" y="47" text-anchor="middle" fill="#0A0A0A" font-size="12" font-weight="600">Pranay</text>
+        <text x="300" y="63" text-anchor="middle" fill="#555" font-size="10">QC check</text>
+
+        <line x1="370" y1="50" x2="430" y2="50" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr2)"/>
+
+        <rect x="430" y="25" width="140" height="50" fill="#0033FF"/>
+        <text x="500" y="47" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="600">Naveen</text>
+        <text x="500" y="63" text-anchor="middle" fill="#FFFFFF" font-size="10">Final sign-off</text>
+
+        <line x1="570" y1="50" x2="630" y2="50" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr2)"/>
+
+        <rect x="630" y="30" width="60" height="40" fill="#0A0A0A"/>
+        <text x="660" y="54" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="600">Client</text>
+      </svg>
+      <div class="diagram-caption">Figure 2 — Approval Chain</div>
+    </div>
+
+    <p>Follow these steps in order. No shortcuts.</p>
+
+    <div class="workflow-step">
+      <div class="step-number">01</div>
+      <div class="step-content">
+        <div class="step-owner">Artist</div>
+        <div class="step-action">Export final renders with correct naming convention</div>
+        <div class="step-detail">Use the exact naming format from Section 06. If unsure, ask before exporting.</div>
+        <span class="step-deadline">Same day as completion</span>
+      </div>
+    </div>
+
+    <div class="workflow-step">
+      <div class="step-number">02</div>
+      <div class="step-content">
+        <div class="step-owner">Pranay Bubna</div>
+        <div class="step-action">Review all renders for technical quality</div>
+        <div class="step-detail">Check resolution, frame rate, codec, color space, audio. Flag and send back if anything fails.</div>
+        <span class="step-deadline">Within 24 hours</span>
+      </div>
+    </div>
+
+    <div class="workflow-step">
+      <div class="step-number">03</div>
+      <div class="step-content">
+        <div class="step-owner">Naveen Kumar</div>
+        <div class="step-action">Final review and sign-off</div>
+        <div class="step-detail">Does it match the brief? Is quality acceptable? If yes, sign off. Nothing leaves without this.</div>
+        <span class="step-deadline">Within 24 hours of Pranay approval</span>
+      </div>
+    </div>
+
+    <div class="workflow-step">
+      <div class="step-number">04</div>
+      <div class="step-content">
+        <div class="step-owner">Naveen Kumar</div>
+        <div class="step-action">Upload approved files to Frame.io</div>
+        <div class="step-detail">Create project if needed. Set to "awaiting feedback" mode.</div>
+        <span class="step-deadline">Same day as sign-off</span>
+      </div>
+    </div>
+
+    <div class="workflow-step">
+      <div class="step-number">05</div>
+      <div class="step-content">
+        <div class="step-owner">Client</div>
+        <div class="step-action">Review and provide feedback on Frame.io</div>
+        <div class="step-detail">Only approved channel for delivery feedback.</div>
+        <span class="step-deadline">Per project contract</span>
+      </div>
+    </div>
+
+    <div class="workflow-step">
+      <div class="step-number">06</div>
+      <div class="step-content">
+        <div class="step-owner">Naveen Kumar</div>
+        <div class="step-action">Archive final approved files</div>
+        <div class="step-detail">Move to Work of Vortex on Google Drive. Keep working files in project folder.</div>
+        <span class="step-deadline">Same day as client sign-off</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: FILE NAMING -->
+  <div class="section" id="section-6">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">File Naming Convention</h2>
+    </div>
+
+    <p>Every deliverable follows this format exactly. No variation.</p>
+
+    <div class="naming-convention"><span class="highlight">ProjectName</span>_<span class="highlight">AssetType</span>_<span class="highlight">Ratio</span>_v<span class="highlight">#.#</span>_<span class="highlight">wSfx</span>.mp4</div>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 720 160" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, Arial, sans-serif;">
+        <!-- Filename -->
+        <text x="360" y="35" text-anchor="middle" font-family="JetBrains Mono, SF Mono, monospace" font-size="16" font-weight="600" fill="#0A0A0A">
+          <tspan fill="#0033FF">Zudio</tspan>_<tspan fill="#0033FF">Promo</tspan>_<tspan fill="#0033FF">9x16</tspan>_<tspan fill="#0033FF">v2.1</tspan>_<tspan fill="#0033FF">wSfx</tspan>.mp4
+        </text>
+
+        <!-- Annotation lines -->
+        <line x1="100" y1="50" x2="100" y2="85" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="100" y="102" text-anchor="middle" fill="#555" font-size="11" font-weight="600">Project Name</text>
+        <text x="100" y="117" text-anchor="middle" fill="#555" font-size="10">(client/brand)</text>
+
+        <line x1="230" y1="50" x2="230" y2="85" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="230" y="102" text-anchor="middle" fill="#555" font-size="11" font-weight="600">Asset Type</text>
+        <text x="230" y="117" text-anchor="middle" fill="#555" font-size="10">(Promo, Hero, TVC)</text>
+
+        <line x1="360" y1="50" x2="360" y2="85" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="360" y="102" text-anchor="middle" fill="#555" font-size="11" font-weight="600">Aspect Ratio</text>
+        <text x="360" y="117" text-anchor="middle" fill="#555" font-size="10">(9x16, 16x9, 1x1)</text>
+
+        <line x1="490" y1="50" x2="490" y2="85" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="490" y="102" text-anchor="middle" fill="#555" font-size="11" font-weight="600">Version</text>
+        <text x="490" y="117" text-anchor="middle" fill="#555" font-size="10">(major.minor)</text>
+
+        <line x1="610" y1="50" x2="610" y2="85" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="610" y="102" text-anchor="middle" fill="#555" font-size="11" font-weight="600">Audio Flag</text>
+        <text x="610" y="117" text-anchor="middle" fill="#555" font-size="10">(wSfx = with SFX)</text>
+      </svg>
+      <div class="diagram-caption">Figure 3 — File Naming Anatomy</div>
+    </div>
+
+    <table class="sop-table">
+      <thead>
+        <tr><th>Component</th><th>Format</th><th>Examples</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ProjectName</td><td>No spaces, no special chars</td><td>Zudio, RedLabel, IndigoSpace</td></tr>
+        <tr><td>AssetType</td><td>Capitalize first letter</td><td>Promo, Hero, TVC, Sizzle</td></tr>
+        <tr><td>Ratio</td><td>WidthxHeight</td><td>9x16, 16x9, 1x1, 4x5</td></tr>
+        <tr><td>Version</td><td>v#.# (major.minor)</td><td>v1.0, v2.1, v3.5</td></tr>
+        <tr><td>Audio</td><td>wSfx / noSfx / wVO</td><td>wSfx, noSfx, wVO</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 7: FOLDER STRUCTURE -->
+  <div class="section" id="section-7">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2 class="section-title">Folder Structure</h2>
+    </div>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, Arial, sans-serif;">
+        <!-- Root -->
+        <rect x="20" y="10" width="200" height="32" fill="#0A0A0A"/>
+        <text x="32" y="31" fill="#FFF" font-size="13" font-weight="600">/ClientName_Project/</text>
+
+        <!-- Level 1 connectors and folders -->
+        <line x1="40" y1="42" x2="40" y2="62" stroke="#0033FF" stroke-width="1.5"/>
+        <line x1="40" y1="62" x2="60" y2="62" stroke="#0033FF" stroke-width="1.5"/>
+        <rect x="62" y="48" width="160" height="28" fill="#E8E8E8"/>
+        <text x="74" y="67" fill="#0A0A0A" font-size="12" font-weight="500">01_Brief/</text>
+
+        <line x1="40" y1="62" x2="40" y2="96" stroke="#0033FF" stroke-width="1.5"/>
+        <line x1="40" y1="96" x2="60" y2="96" stroke="#0033FF" stroke-width="1.5"/>
+        <rect x="62" y="82" width="160" height="28" fill="#E8E8E8"/>
+        <text x="74" y="101" fill="#0A0A0A" font-size="12" font-weight="500">02_Assets/</text>
+
+        <line x1="40" y1="96" x2="40" y2="130" stroke="#0033FF" stroke-width="1.5"/>
+        <line x1="40" y1="130" x2="60" y2="130" stroke="#0033FF" stroke-width="1.5"/>
+        <rect x="62" y="116" width="160" height="28" fill="#E8E8E8"/>
+        <text x="74" y="135" fill="#0A0A0A" font-size="12" font-weight="500">03_Working/</text>
+
+        <line x1="40" y1="130" x2="40" y2="164" stroke="#0033FF" stroke-width="1.5"/>
+        <line x1="40" y1="164" x2="60" y2="164" stroke="#0033FF" stroke-width="1.5"/>
+        <rect x="62" y="150" width="160" height="28" fill="#E8E8E8"/>
+        <text x="74" y="169" fill="#0A0A0A" font-size="12" font-weight="500">04_Renders/</text>
+
+        <!-- Sub-level for Renders -->
+        <line x1="100" y1="178" x2="100" y2="198" stroke="#0033FF" stroke-width="1"/>
+        <line x1="100" y1="198" x2="120" y2="198" stroke="#0033FF" stroke-width="1"/>
+        <rect x="122" y="186" width="140" height="24" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="1"/>
+        <text x="134" y="203" fill="#555" font-size="11">WIP/</text>
+
+        <line x1="100" y1="198" x2="100" y2="226" stroke="#0033FF" stroke-width="1"/>
+        <line x1="100" y1="226" x2="120" y2="226" stroke="#0033FF" stroke-width="1"/>
+        <rect x="122" y="214" width="140" height="24" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="1"/>
+        <text x="134" y="231" fill="#555" font-size="11">Final/</text>
+
+        <line x1="40" y1="164" x2="40" y2="268" stroke="#0033FF" stroke-width="1.5"/>
+        <line x1="40" y1="268" x2="60" y2="268" stroke="#0033FF" stroke-width="1.5"/>
+        <rect x="62" y="254" width="160" height="28" fill="#E8E8E8"/>
+        <text x="74" y="273" fill="#0A0A0A" font-size="12" font-weight="500">05_Delivery/</text>
+
+        <line x1="40" y1="268" x2="40" y2="302" stroke="#0033FF" stroke-width="1.5"/>
+        <line x1="40" y1="302" x2="60" y2="302" stroke="#0033FF" stroke-width="1.5"/>
+        <rect x="62" y="288" width="200" height="28" fill="#0033FF"/>
+        <text x="74" y="307" fill="#FFF" font-size="12" font-weight="600">Work_of_Vortex/</text>
+
+        <!-- Labels on right -->
+        <text x="290" y="67" fill="#555" font-size="10" font-style="italic">Client brief, contracts</text>
+        <text x="290" y="101" fill="#555" font-size="10" font-style="italic">Source files, textures</text>
+        <text x="290" y="135" fill="#555" font-size="10" font-style="italic">Active project files</text>
+        <text x="290" y="169" fill="#555" font-size="10" font-style="italic">Rendered outputs</text>
+        <text x="290" y="273" fill="#555" font-size="10" font-style="italic">Client-approved files</text>
+        <text x="290" y="307" fill="#555" font-size="10" font-style="italic">Final archive (portfolio)</text>
+      </svg>
+      <div class="diagram-caption">Figure 4 — Project Folder Structure</div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: CLIENT COMMUNICATION -->
+  <div class="section" id="section-8">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2 class="section-title">Client Communication</h2>
+    </div>
+
+    <p>All delivery feedback goes through Frame.io. Here's what happens at each stage:</p>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, Arial, sans-serif;">
+        <defs>
+          <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"/>
+          </marker>
+        </defs>
+
+        <!-- Phase labels -->
+        <text x="120" y="25" text-anchor="middle" fill="#0033FF" font-size="10" font-weight="700" letter-spacing="0.1em">INTERNAL</text>
+        <text x="360" y="25" text-anchor="middle" fill="#0033FF" font-size="10" font-weight="700" letter-spacing="0.1em">HANDOFF</text>
+        <text x="600" y="25" text-anchor="middle" fill="#0033FF" font-size="10" font-weight="700" letter-spacing="0.1em">CLIENT</text>
+
+        <line x1="240" y1="15" x2="240" y2="190" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="480" y1="15" x2="480" y2="190" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
+
+        <!-- Internal: Slack -->
+        <rect x="40" y="50" width="160" height="44" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="120" y="72" text-anchor="middle" fill="#0A0A0A" font-size="12" font-weight="600">Slack</text>
+        <text x="120" y="86" text-anchor="middle" fill="#555" font-size="10">Team discussion</text>
+
+        <!-- Internal: ClickUp -->
+        <rect x="40" y="110" width="160" height="44" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="120" y="132" text-anchor="middle" fill="#0A0A0A" font-size="12" font-weight="600">ClickUp</text>
+        <text x="120" y="146" text-anchor="middle" fill="#555" font-size="10">Task tracking</text>
+
+        <!-- Handoff: Frame.io upload -->
+        <rect x="280" y="70" width="160" height="60" fill="#0033FF"/>
+        <text x="360" y="96" text-anchor="middle" fill="#FFF" font-size="12" font-weight="600">Frame.io</text>
+        <text x="360" y="112" text-anchor="middle" fill="#FFF" font-size="10">Upload + set to review</text>
+
+        <line x1="200" y1="72" x2="280" y2="92" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr3)"/>
+        <line x1="440" y1="100" x2="520" y2="100" stroke="#0A0A0A" stroke-width="2" marker-end="url(#arr3)"/>
+
+        <!-- Client: Review -->
+        <rect x="520" y="70" width="160" height="60" fill="#FFFFFF" stroke="#0033FF" stroke-width="1.5"/>
+        <text x="600" y="96" text-anchor="middle" fill="#0A0A0A" font-size="12" font-weight="600">Client Reviews</text>
+        <text x="600" y="112" text-anchor="middle" fill="#555" font-size="10">Comments on Frame.io</text>
+
+        <!-- Banned channels -->
+        <rect x="520" y="150" width="160" height="36" fill="#FFFFFF" stroke="#FF0000" stroke-width="1.5"/>
+        <text x="600" y="173" text-anchor="middle" fill="#FF0000" font-size="11" font-weight="600">No email / WhatsApp</text>
+      </svg>
+      <div class="diagram-caption">Figure 5 — Communication Channels by Phase</div>
+    </div>
+  </div>
+
+  <!-- SECTION 9: FAILURE CASES -->
+  <div class="section" id="section-9">
+    <div class="section-header">
+      <span class="section-number">09</span>
+      <h2 class="section-title">Failure Cases & Escalation</h2>
+    </div>
+
+    <div class="severity-bar">
+      <div class="severity-level severity-low">
+        <div class="severity-label">Low</div>
+        <div class="severity-desc">Minor naming error. Fix and re-upload.</div>
+      </div>
+      <div class="severity-level severity-medium">
+        <div class="severity-label">Medium</div>
+        <div class="severity-desc">QC fails. Send back to artist. Fix in 24h.</div>
+      </div>
+      <div class="severity-level severity-high">
+        <div class="severity-label">High</div>
+        <div class="severity-desc">Client sees unreviewed work. Slack Naveen now.</div>
+      </div>
+      <div class="severity-level severity-critical">
+        <div class="severity-label">Critical</div>
+        <div class="severity-desc">Wrong file sent to client. Call Naveen directly.</div>
+      </div>
+    </div>
+
+    <table class="sop-table">
+      <thead>
+        <tr><th>Failure</th><th>Action</th><th>Contact</th><th>Timeframe</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Wrong naming convention</td><td>Rename and re-upload</td><td>Artist</td><td>Same day</td></tr>
+        <tr><td>QC finds technical issues</td><td>Send back with notes on Slack</td><td>Pranay</td><td>24 hours</td></tr>
+        <tr><td>Client gives feedback outside Frame.io</td><td>Redirect to Frame.io, log the feedback there</td><td>Naveen</td><td>Immediate</td></tr>
+        <tr><td>Client requests changes after sign-off</td><td>New scope. New contract required.</td><td>Naveen</td><td>Before any work starts</td></tr>
+        <tr><td>Wrong file sent to client</td><td>Remove from Frame.io immediately. Replace.</td><td>Naveen (call)</td><td>Within 1 hour</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-critical">Changes requested after final client sign-off = new scope = new contract. No free rework.</div>
+  </div>
+
+  <!-- SECTION 10: VERSION HISTORY -->
+  <div class="section" id="section-10">
+    <div class="section-header">
+      <span class="section-number">10</span>
+      <h2 class="section-title">Version History</h2>
+    </div>
+
+    <table class="sop-table">
+      <thead>
+        <tr><th>Version</th><th>Date</th><th>Changes</th><th>Author</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>v1.0</td><td>Jan 2026</td><td>Initial SOP</td><td>Naveen Kumar</td></tr>
+        <tr><td>v2.0</td><td>Mar 2026</td><td>Migrated to HTML format with inline diagrams</td><td>Naveen Kumar</td></tr>
+        <tr><td>v3.0</td><td>Mar 2026</td><td>Visual-first rebuild. Added KPI cards, role cards, tool grid, severity bar, folder structure diagram, communication flow diagram.</td><td>Naveen Kumar</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="footer-logo">
+      <svg viewBox="0 0 124 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M57.2188 79.5474L83.8471 109.234H123.8L75.0703 59.2979L57.2188 79.5474Z" fill="#999"/>
+        <path d="M123.8 0H83.8471L57.2188 30.1698H94.3107L123.8 0Z" fill="#999"/>
+        <path d="M69.7027 54.6178L58.4598 67.4969C58.3572 67.6172 58.2118 67.7804 58.0279 67.9909C56.0906 70.2205 50.1035 77.0767 49.6288 77.6137L48.7265 78.5974L29.2256 99.8535L20.617 109.236H0V87.1076L9.94287 76.7889L19.2101 67.1704L32.7409 53.6813L21.0404 42.0781L10.5159 31.1365L0 20.1992V0H22.503L30.0467 8.78507L47.9995 29.6931C48.085 29.7962 48.3758 30.1313 48.8077 30.6296C50.8861 33.0224 56.2489 39.187 58.0407 41.2533C58.2161 41.4552 58.3572 41.6185 58.4598 41.7345L69.7027 54.6178Z" fill="#999"/>
+      </svg>
+      <span class="footer-logo-text">Vortex Labs</span>
+    </div>
+    <div class="footer-info">Client Delivery SOP — v3.0 — March 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
